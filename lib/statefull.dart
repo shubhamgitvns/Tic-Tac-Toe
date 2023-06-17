@@ -28,15 +28,19 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisSpacing: 5,
           ),
           itemCount: grid.length,
-          itemBuilder: (context, index) => InkWell(
-            // if click the icon than work splash color like click button in the css
-            splashColor: Colors.teal,
-            onTap: (){},
-            child: Center(
-                child: Text(
-                  grid[index],
-                  style: TextStyle(fontSize: 50),
-                )),
+          itemBuilder: (context, index) => Material(
+            //Create the background color in the grid
+            color: Colors.blueAccent,
+            child: InkWell(
+              // if click the icon than work splash color like click button in the css
+              splashColor: Colors.teal,
+              onTap: (){},
+              child: Center(
+                  child: Text(
+                    grid[index],
+                    style: TextStyle(fontSize: 50),
+                  )),
+            ),
           ),
         ));
   }
