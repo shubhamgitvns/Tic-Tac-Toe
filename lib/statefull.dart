@@ -20,12 +20,27 @@ class _MyHomePageState extends State<MyHomePage> {
           grid[i] = cuurenplayer;
           cuurenplayer = cuurenplayer == 'x' ? 'o' : 'x';
         }
-        if(cuurenplayer == grid[3]){
-          print("hii");
 
-        }
       },
     );
+    FindWinner(grid[i]);
+  }
+
+  bool check(i1,i2,i3,sign){
+    if(grid[i1]==sign && grid[i2]==sign && grid[i3]==sign){
+      return true;
+    }
+    return false;
+  }
+
+  void FindWinner(currentsign){
+    if(
+    check(0,1,2,currentsign) || check(3, 4, 5, currentsign) || check(6, 7, 8, currentsign) || //row
+    check(0, 3, 6, currentsign) ||check(1, 4, 7, currentsign) || check(2, 5, 8, currentsign) || //column
+        check(0, 4, 8, currentsign) || check(2, 4, 6, currentsign)){
+      print("$currentsign won");
+    }
+
   }
 
   @override
@@ -64,6 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     splashColor: Colors.teal,
                     onTap: () {
                       cross(index);
+
                     },
                     child: Center(
                         child: Text(
