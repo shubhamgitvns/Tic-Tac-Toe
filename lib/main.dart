@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tic Toc Toe',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-
   final String title;
 
   @override
@@ -33,79 +31,29 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
-  void _incrementCounter() {
-
-  }
+  var grid = [
+    '-', '-', '-',
+    '-', '-', '-',
+    '-', '-', '-'
+  ];
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Tic Tac Toe "),
-        centerTitle: true,
-        shadowColor: Colors.tealAccent,
-      ),
-
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-           Row(
-             mainAxisAlignment: MainAxisAlignment.center,
-             children: const [
-              SizedBox(
-                width: 200,
-                height: 100,
-                child: Text("One"),
-              ),
-
-               SizedBox(
-                 width: 200,
-                 height: 100,
-                 child: Text("Two"),
-               ),
-
-               SizedBox(
-                 width: 200,
-                 height: 100,
-                 child: Text("Three"),
-               )
-             ],
-           ),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                SizedBox(
-                  width: 200,
-                  height: 100,
-                  child: Text("One"),
-                ),
-
-                SizedBox(
-                  width: 200,
-                  height: 100,
-                  child: Text("Two"),
-                ),
-
-                SizedBox(
-                  width: 200,
-                  height: 100,
-                  child: Text("Three"),
-                )
-              ],
-            )
-
-
-          ],
+        appBar: AppBar(
+          title: const Text("Tic Tac Toe "),
+          centerTitle: true,
+          shadowColor: Colors.tealAccent,
         ),
-      ),
-    );
+        body: GridView.builder(
+            gridDelegate:
+                const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 5,
+                  mainAxisSpacing: 20,
+                ),
+            itemCount: grid.length,
+            itemBuilder: (context, index) =>  Center(child: Text(grid[index],style: TextStyle(fontSize: 50),)),));
   }
+
 }
