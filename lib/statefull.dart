@@ -12,7 +12,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
   var winner = "";
-  var cuurenplayer = 'x';
+  var cuurenplayer = 'X';
   void cross(i) {
     setState(
       () {
