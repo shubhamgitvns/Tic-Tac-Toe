@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Tik Tok Toi',
+      title: 'Tic Toc Toe',
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
@@ -43,6 +43,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Tic Tac Toe "),
+        centerTitle: true,
+        shadowColor: Colors.tealAccent,
+      ),
 
       body: Center(
 
@@ -56,20 +61,48 @@ class _MyHomePageState extends State<MyHomePage> {
              children: const [
               SizedBox(
                 width: 200,
+                height: 100,
                 child: Text("One"),
               ),
 
                SizedBox(
                  width: 200,
+                 height: 100,
                  child: Text("Two"),
                ),
 
                SizedBox(
                  width: 200,
+                 height: 100,
                  child: Text("Three"),
                )
              ],
-           )
+           ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                SizedBox(
+                  width: 200,
+                  height: 100,
+                  child: Text("One"),
+                ),
+
+                SizedBox(
+                  width: 200,
+                  height: 100,
+                  child: Text("Two"),
+                ),
+
+                SizedBox(
+                  width: 200,
+                  height: 100,
+                  child: Text("Three"),
+                )
+              ],
+            )
+
+
           ],
         ),
       ),
