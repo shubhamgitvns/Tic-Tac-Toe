@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Tik Tok Toi',
       theme: ThemeData(
 
@@ -48,7 +49,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
 
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[],
+          children: const <Widget>[
+           
+          ],
         ),
       ),
     );
