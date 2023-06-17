@@ -49,8 +49,27 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
 
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-           
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+           Row(
+             mainAxisAlignment: MainAxisAlignment.center,
+             children: const [
+              SizedBox(
+                width: 200,
+                child: Text("One"),
+              ),
+
+               SizedBox(
+                 width: 200,
+                 child: Text("Two"),
+               ),
+
+               SizedBox(
+                 width: 200,
+                 child: Text("Three"),
+               )
+             ],
+           )
           ],
         ),
       ),
