@@ -13,6 +13,16 @@ class _MyHomePageState extends State<MyHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
   var winner = "";
   var cuurenplayer = 'X';
+
+  void restart(){
+    setState(() {
+
+      grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
+
+
+    });
+  }
+
   void cross(i) {
     setState(
       () {
@@ -66,13 +76,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontWeight: FontWeight.bold,
                     color: Colors.green),
               ),
+
             Container(
               constraints: const BoxConstraints(
                 maxHeight: 400,
                 maxWidth: 400,
               ),
               margin: const EdgeInsets.all(20),
-              color: Colors.black,
+              color: Colors.blue[900],
               child: GridView.builder(
                 //if the background color using extra space than using shrinkwrap
                 // in this app using shrinkwrap in the black color
@@ -85,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemCount: grid.length,
                 itemBuilder: (context, index) => Material(
                   //Create the background color in the grid
-                  color: Colors.blueAccent,
+                  color: Colors.white,
                   child: InkWell(
                     // if click the icon than work splash color like click button in the css
                     splashColor: Colors.teal,
@@ -95,12 +106,38 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Center(
                         child: Text(
                       grid[index],
-                      style: const TextStyle(fontSize: 50),
+                      style: const TextStyle(fontSize: 50,fontWeight: FontWeight.bold,color: Colors.teal),
                     )),
                   ),
                 ),
               ),
             ),
+            Container(
+              decoration:
+              BoxDecoration(color: Colors.white, boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade500,
+                  offset: const Offset(2.0, 2.0),
+                  blurRadius: 10,
+                  spreadRadius: 1.0,
+                ),
+                BoxShadow(
+                  color: Colors.grey.shade300,
+                  offset: const Offset(-2.0, -2.0),
+                  blurRadius: 10,
+                  spreadRadius: 1.0,
+                )
+              ]),
+              child: SizedBox(
+                height: 50,
+                width: 100,
+                child: ElevatedButton(
+                    onPressed: (){
+                  restart();
+                },
+                    child:const Text("restart",)),
+              ),
+            )
           ],
         ),
       ),
