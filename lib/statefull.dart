@@ -12,10 +12,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
+
   var cuurenplayer='x';
   void cross(i){
     setState(() {
-      grid[i] = cuurenplayer;
+      if(grid[i]=='-'){
+        grid[i] = cuurenplayer;
+        cuurenplayer = cuurenplayer ==  'x' ? 'o' : 'x';
+      }
+
     });
   }
 
