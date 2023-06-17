@@ -21,25 +21,28 @@ class _MyHomePageState extends State<MyHomePage> {
           centerTitle: true,
           shadowColor: Colors.tealAccent,
         ),
-        body: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 5,
-            mainAxisSpacing: 5,
-          ),
-          itemCount: grid.length,
-          itemBuilder: (context, index) => Material(
-            //Create the background color in the grid
-            color: Colors.blueAccent,
-            child: InkWell(
-              // if click the icon than work splash color like click button in the css
-              splashColor: Colors.teal,
-              onTap: (){},
-              child: Center(
-                  child: Text(
-                    grid[index],
-                    style: TextStyle(fontSize: 50),
-                  )),
+        body: Container(
+          margin: EdgeInsets.all(10),
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 5,
+            ),
+            itemCount: grid.length,
+            itemBuilder: (context, index) => Material(
+              //Create the background color in the grid
+              color: Colors.blueAccent,
+              child: InkWell(
+                // if click the icon than work splash color like click button in the css
+                splashColor: Colors.teal,
+                onTap: (){},
+                child: Center(
+                    child: Text(
+                      grid[index],
+                      style: TextStyle(fontSize: 50),
+                    )),
+              ),
             ),
           ),
         ));
