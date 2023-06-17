@@ -12,6 +12,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
+  var cuurenplayer='x';
+  void cross(i){
+    setState(() {
+      grid[i] = cuurenplayer;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: InkWell(
                 // if click the icon than work splash color like click button in the css
                 splashColor: Colors.teal,
-                onTap: (){},
+                onTap: (){
+                  cross(index);
+                },
                 child: Center(
                     child: Text(
                       grid[index],
