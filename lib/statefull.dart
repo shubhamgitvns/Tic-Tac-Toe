@@ -22,8 +22,12 @@ class _MyHomePageState extends State<MyHomePage> {
           shadowColor: Colors.tealAccent,
         ),
         body: Container(
-          margin: EdgeInsets.all(10),
+          margin: EdgeInsets.all(20),
+          color: Colors.black,
           child: GridView.builder(
+            //if the background color using extra space than using shrinkwrap
+            // in this app using shrinkwrap in the black color
+            shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
               crossAxisSpacing: 5,
@@ -40,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Center(
                     child: Text(
                       grid[index],
-                      style: TextStyle(fontSize: 50),
+                      style: const TextStyle(fontSize: 50),
                     )),
               ),
             ),
