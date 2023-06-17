@@ -31,11 +31,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var grid = [
-    '-', '-', '-',
-    '-', '-', '-',
-    '-', '-', '-'
-  ];
+  var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
 
   @override
   Widget build(BuildContext context) {
@@ -46,14 +42,20 @@ class _MyHomePageState extends State<MyHomePage> {
           shadowColor: Colors.tealAccent,
         ),
         body: GridView.builder(
-            gridDelegate:
-                const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 20,
-                ),
-            itemCount: grid.length,
-            itemBuilder: (context, index) =>  Center(child: Text(grid[index],style: TextStyle(fontSize: 50),)),));
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            crossAxisSpacing: 5,
+            mainAxisSpacing: 5,
+          ),
+          itemCount: grid.length,
+          itemBuilder: (context, index) => InkWell(
+            onTap: (){},
+            child: Center(
+                child: Text(
+              grid[index],
+              style: TextStyle(fontSize: 50),
+            )),
+          ),
+        ));
   }
-
 }
