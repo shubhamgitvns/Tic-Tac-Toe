@@ -11,36 +11,40 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
-
+  var winner = "";
   var cuurenplayer = 'x';
   void cross(i) {
     setState(
       () {
         if (grid[i] == '-') {
           grid[i] = cuurenplayer;
-          cuurenplayer = cuurenplayer == 'x' ? 'o' : 'x';
+          cuurenplayer = cuurenplayer == 'X' ? 'O' : 'X';
         }
-
       },
     );
     FindWinner(grid[i]);
   }
 
-  bool check(i1,i2,i3,sign){
-    if(grid[i1]==sign && grid[i2]==sign && grid[i3]==sign){
+  bool check(i1, i2, i3, sign) {
+    if (grid[i1] == sign && grid[i2] == sign && grid[i3] == sign) {
       return true;
     }
     return false;
   }
 
-  void FindWinner(currentsign){
-    if(
-    check(0,1,2,currentsign) || check(3, 4, 5, currentsign) || check(6, 7, 8, currentsign) || //row
-    check(0, 3, 6, currentsign) ||check(1, 4, 7, currentsign) || check(2, 5, 8, currentsign) || //column
-        check(0, 4, 8, currentsign) || check(2, 4, 6, currentsign)){
-      print("$currentsign won");
+  void FindWinner(currentsign) {
+    if (check(0, 1, 2, currentsign) ||
+        check(3, 4, 5, currentsign) ||
+        check(6, 7, 8, currentsign) || //row
+        check(0, 3, 6, currentsign) ||
+        check(1, 4, 7, currentsign) ||
+        check(2, 5, 8, currentsign) || //column
+        check(0, 4, 8, currentsign) ||
+        check(2, 4, 6, currentsign)) {
+      setState(() {
+        winner = currentsign;
+      });
     }
-
   }
 
   @override
@@ -54,10 +58,18 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           children: [
+            if (winner != "")
+              Text(
+                "$winner won the game",
+                style: const TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green),
+              ),
             Container(
               constraints: const BoxConstraints(
-                maxHeight: 500,
-                maxWidth: 500,
+                maxHeight: 400,
+                maxWidth: 400,
               ),
               margin: const EdgeInsets.all(20),
               color: Colors.black,
@@ -79,7 +91,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     splashColor: Colors.teal,
                     onTap: () {
                       cross(index);
-
                     },
                     child: Center(
                         child: Text(
