@@ -12,7 +12,7 @@ class IntroPage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Intro page"),
+          title: const Text("Intro page"),
           centerTitle: true,
           backgroundColor: Colors.amber,
           shadowColor: Colors.lightBlueAccent,

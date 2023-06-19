@@ -12,30 +12,71 @@ class _IntroFormState extends State<IntroForm> {
   final _textcontroller=TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: SizedBox(
-          width: 500,
-          //Text field icon
-          child: TextField(
-            controller: _textcontroller,
-            decoration: InputDecoration(
-              hintText: "What's your mind",
-              border: const OutlineInputBorder(),
-              suffixIcon: IconButton(
-                onPressed: (){
-                  _textcontroller.clear();// _text controller
-                },
-                //Cross Icon
-                icon: const Icon(Icons.clear),
-
-              )
-            ),
-          ),
-        )
-
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+    Center(
+    child: Padding(
+    padding: const EdgeInsets.all(20.0),
+    //Text field icon
+    child: Container(
+      constraints: const BoxConstraints(
+        maxHeight: 600,
+        maxWidth: 600,
       ),
+      child: TextField(
+      controller: _textcontroller,
+      decoration: InputDecoration(
+      hintText: "What's your mind",
+      border: const OutlineInputBorder(),
+      suffixIcon: IconButton(
+      onPressed: (){
+      _textcontroller.clear();// _text controller
+      },
+      //Cross Icon
+      icon: const Icon(Icons.clear),
+
+      )
+      ),
+      ),
+    ),
+
+
+    ),
+    ),
+
+    Center(
+    child: Padding(
+    padding: const EdgeInsets.all(20.0),
+
+    //Text field icon
+    child: Container(
+      constraints: const BoxConstraints(
+        maxWidth: 600,
+        maxHeight: 600,
+      ),
+      child: TextField(
+      controller: _textcontroller,
+      decoration: InputDecoration(
+      hintText: "What's your mind",
+      border: const OutlineInputBorder(),
+      suffixIcon: IconButton(
+      onPressed: (){
+      _textcontroller.clear();// _text controller
+      },
+      //Cross Icon
+      icon: const Icon(Icons.clear),
+
+      )
+      ),
+      ),
+    ),
+
+
+    ),
+    )
+              ],
     );
   }
 }
