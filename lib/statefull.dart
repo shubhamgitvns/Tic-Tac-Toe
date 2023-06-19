@@ -9,12 +9,14 @@ class IntroForm extends StatefulWidget {
 
 class _IntroFormState extends State<IntroForm> {
   //use this controller to get what the user get
+
   final _textcontroller = TextEditingController();
+  final _secondcontroler = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Center(
           child: Padding(
@@ -54,7 +56,7 @@ class _IntroFormState extends State<IntroForm> {
                 maxHeight: 600,
               ),
               child: TextField(
-                controller: _textcontroller,
+                controller: _secondcontroler,
                 decoration: InputDecoration(
                     hintText: "What's your mind",
                     filled: true,
@@ -63,7 +65,7 @@ class _IntroFormState extends State<IntroForm> {
                     ),
                     suffixIcon: IconButton(
                       onPressed: () {
-                        _textcontroller.clear(); // _text controller
+                        _secondcontroler.clear(); // _text controller
                       },
                       //Cross Icon
                       icon: const Icon(Icons.clear),
@@ -73,7 +75,34 @@ class _IntroFormState extends State<IntroForm> {
           ),
         ),
 
-        
+        Container(
+          decoration: BoxDecoration(
+              color: Colors.white, boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade500,
+              offset: const Offset(2.0, 2.0),
+              blurRadius: 10,
+              spreadRadius: 1.0,
+            ),
+            BoxShadow(
+              color: Colors.grey.shade300,
+              offset: const Offset(-2.0, -2.0),
+              blurRadius: 10,
+              spreadRadius: 1.0,
+            )
+          ]),
+          child: SizedBox(
+            height: 50,
+            width: 100,
+            child: ElevatedButton(
+                onPressed: () {
+
+                },
+                child: const Text(
+                  "restart",
+                )),
+          ),
+        )
       ],
     );
   }
