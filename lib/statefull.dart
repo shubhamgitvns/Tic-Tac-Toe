@@ -1,5 +1,47 @@
 import 'package:flutter/material.dart';
 
+class IntroForm extends StatefulWidget {
+  const IntroForm({super.key});
+
+  @override
+  State<IntroForm> createState() => _IntroFormState();
+}
+
+class _IntroFormState extends State<IntroForm> {
+  //use this controller to get what the user get
+  final _textcontroller=TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: SizedBox(
+          width: 500,
+          //Text field icon
+          child: TextField(
+            controller: _textcontroller,
+            decoration: InputDecoration(
+              hintText: "What's your mind",
+              border: const OutlineInputBorder(),
+              suffixIcon: IconButton(
+                onPressed: (){
+                  _textcontroller.clear();// _text controller
+                },
+                //Cross Icon
+                icon: const Icon(Icons.clear),
+
+              )
+            ),
+          ),
+        )
+
+      ),
+    );
+  }
+}
+
+
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -12,25 +54,30 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
   var winner = "";
-  var cuurenplayer = 'X';
+  var currentplayer = 'X';
+  var text="Winner";
 
-  void restart(){
+
+  void restart() {
     setState(() {
-
+     
       grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
 
-
     });
+
+
   }
 
   void cross(i) {
     setState(
       () {
         if (grid[i] == '-') {
-          grid[i] = cuurenplayer;
-          cuurenplayer = cuurenplayer == 'X' ? 'O' : 'X';
+          grid[i] = currentplayer;
+          currentplayer = currentplayer == 'X' ? 'O' : 'X';
         }
+
       },
+
     );
     FindWinner(grid[i]);
   }
@@ -53,6 +100,8 @@ class _MyHomePageState extends State<MyHomePage> {
         check(2, 4, 6, currentsign)) {
       setState(() {
         winner = currentsign;
+        restart();
+
       });
     }
   }
@@ -70,13 +119,12 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             if (winner != "")
               Text(
-                "$winner won the game",
+                "$winner $text",
                 style: const TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                     color: Colors.green),
               ),
-
             Container(
               constraints: const BoxConstraints(
                 maxHeight: 400,
@@ -106,15 +154,17 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Center(
                         child: Text(
                       grid[index],
-                      style: const TextStyle(fontSize: 50,fontWeight: FontWeight.bold,color: Colors.teal),
+                      style: const TextStyle(
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.teal),
                     )),
                   ),
                 ),
               ),
             ),
             Container(
-              decoration:
-              BoxDecoration(color: Colors.white, boxShadow: [
+              decoration: BoxDecoration(color: Colors.white, boxShadow: [
                 BoxShadow(
                   color: Colors.grey.shade500,
                   offset: const Offset(2.0, 2.0),
@@ -132,10 +182,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 50,
                 width: 100,
                 child: ElevatedButton(
-                    onPressed: (){
-                  restart();
-                },
-                    child:const Text("restart",)),
+                    onPressed: () {
+                      restart();
+                    },
+                    child: const Text(
+                      "restart",
+                    )),
               ),
             )
           ],
