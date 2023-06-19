@@ -6,8 +6,8 @@ void main() {
     debugShowCheckedModeBanner: false,
     initialRoute: '/',
     routes: {
-      '/': (context) => const IntroPage(),
-//     '/second': (context) => SecondPage(),
+      '/': (context) =>  IntroPage(),
+     '/second': (context) => const MyApp(),
     },
   ));
 }
