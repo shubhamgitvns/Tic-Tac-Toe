@@ -9,79 +9,75 @@ class IntroForm extends StatefulWidget {
 
 class _IntroFormState extends State<IntroForm> {
   //use this controller to get what the user get
-  final _textcontroller=TextEditingController();
+  final _textcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-    Center(
-    child: Padding(
-    padding: const EdgeInsets.all(20.0),
-    //Text field icon
-    child: Container(
-      constraints: const BoxConstraints(
-        maxHeight: 600,
-        maxWidth: 600,
-      ),
-      child: TextField(
-      controller: _textcontroller,
-      decoration: InputDecoration(
-      hintText: "What's your mind",
-      border: const OutlineInputBorder(),
-      suffixIcon: IconButton(
-      onPressed: (){
-      _textcontroller.clear();// _text controller
-      },
-      //Cross Icon
-      icon: const Icon(Icons.clear),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            //Text field icon
+            child: Container(
+              constraints: const BoxConstraints(
+                maxHeight: 600,
+                maxWidth: 600,
+              ),
+              child: TextField(
+                controller: _textcontroller,
+                decoration: InputDecoration(
+                    hintText: "What's your mind",
+                    filled: true,
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        _textcontroller.clear(); // _text controller
+                      },
+                      //Cross Icon
+                      icon: const Icon(Icons.clear),
+                    )),
+              ),
+            ),
+          ),
+        ),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
 
-      )
-      ),
-      ),
-    ),
+            //Text field icon
+            child: Container(
+              constraints: const BoxConstraints(
+                maxWidth: 600,
+                maxHeight: 600,
+              ),
+              child: TextField(
+                controller: _textcontroller,
+                decoration: InputDecoration(
+                    hintText: "What's your mind",
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        _textcontroller.clear(); // _text controller
+                      },
+                      //Cross Icon
+                      icon: const Icon(Icons.clear),
+                    )),
+              ),
+            ),
+          ),
+        ),
 
-
-    ),
-    ),
-
-    Center(
-    child: Padding(
-    padding: const EdgeInsets.all(20.0),
-
-    //Text field icon
-    child: Container(
-      constraints: const BoxConstraints(
-        maxWidth: 600,
-        maxHeight: 600,
-      ),
-      child: TextField(
-      controller: _textcontroller,
-      decoration: InputDecoration(
-      hintText: "What's your mind",
-      border: const OutlineInputBorder(),
-      suffixIcon: IconButton(
-      onPressed: (){
-      _textcontroller.clear();// _text controller
-      },
-      //Cross Icon
-      icon: const Icon(Icons.clear),
-
-      )
-      ),
-      ),
-    ),
-
-
-    ),
-    )
-              ],
+        
+      ],
     );
   }
 }
-
-
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -96,17 +92,12 @@ class _MyHomePageState extends State<MyHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
   var winner = "";
   var currentplayer = 'X';
-  var text="Winner";
-
+  var text = "Winner";
 
   void restart() {
     setState(() {
-     
       grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
-
     });
-
-
   }
 
   void cross(i) {
@@ -116,9 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
           grid[i] = currentplayer;
           currentplayer = currentplayer == 'X' ? 'O' : 'X';
         }
-
       },
-
     );
     FindWinner(grid[i]);
   }
@@ -142,7 +131,6 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
         winner = currentsign;
         restart();
-
       });
     }
   }
