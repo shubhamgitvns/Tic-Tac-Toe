@@ -73,87 +73,89 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
         shadowColor: Colors.tealAccent,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Text("$currentplayer turn",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.amber),),
-            if (winner != "")
-              Text(
-                "$winner Winner",
-                style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green),
-              ),
-
-            Container(
-              constraints: const BoxConstraints(
-                maxHeight: 400,
-                maxWidth: 400,
-              ),
-              margin: const EdgeInsets.all(20),
-              color: Colors.blue[900],
-              child: GridView.builder(
-                //if the background color using extra space than using shrinkwrap
-                // in this app using shrinkwrap in the black color
-                shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 5,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              Text("$currentplayer turn",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.amber),),
+              if (winner != "")
+                Text(
+                  "$winner Winner",
+                  style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green),
                 ),
-                itemCount: grid.length,
-                itemBuilder: (context, index) => Material(
-                  //Create the background color in the grid
-                  color: Colors.white,
-                  child: InkWell(
-                    // if click the icon than work splash color like click button in the css
-                    splashColor: Colors.teal,
-                    onTap: () {
-                      cross(index);
 
-                    },
-                    child: Center(
-                        child: Text(
-                      grid[index],
-                      style: const TextStyle(
-                          fontSize: 50,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.teal),
-                    )),
+              Container(
+                constraints: const BoxConstraints(
+                  maxHeight: 400,
+                  maxWidth: 400,
+                ),
+                margin: const EdgeInsets.all(20),
+                color: Colors.blue[900],
+                child: GridView.builder(
+                  //if the background color using extra space than using shrinkwrap
+                  // in this app using shrinkwrap in the black color
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
+                  ),
+                  itemCount: grid.length,
+                  itemBuilder: (context, index) => Material(
+                    //Create the background color in the grid
+                    color: Colors.white,
+                    child: InkWell(
+                      // if click the icon than work splash color like click button in the css
+                      splashColor: Colors.teal,
+                      onTap: () {
+                        cross(index);
+
+                      },
+                      child: Center(
+                          child: Text(
+                        grid[index],
+                        style: const TextStyle(
+                            fontSize: 50,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.teal),
+                      )),
+                    ),
                   ),
                 ),
               ),
-            ),
 
-            Container(
-              decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.shade500,
-                  offset: const Offset(2.0, 2.0),
-                  blurRadius: 10,
-                  spreadRadius: 1.0,
+              Container(
+                decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.shade500,
+                    offset: const Offset(2.0, 2.0),
+                    blurRadius: 10,
+                    spreadRadius: 1.0,
+                  ),
+                  BoxShadow(
+                    color: Colors.grey.shade300,
+                    offset: const Offset(-2.0, -2.0),
+                    blurRadius: 10,
+                    spreadRadius: 1.0,
+                  )
+                ]),
+                child: SizedBox(
+                  height: 30,
+                  width: 100,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        restart();
+                      },
+                      child: const Text(
+                        "restart",
+                      )),
                 ),
-                BoxShadow(
-                  color: Colors.grey.shade300,
-                  offset: const Offset(-2.0, -2.0),
-                  blurRadius: 10,
-                  spreadRadius: 1.0,
-                )
-              ]),
-              child: SizedBox(
-                height: 30,
-                width: 100,
-                child: ElevatedButton(
-                    onPressed: () {
-                      restart();
-                    },
-                    child: const Text(
-                      "restart",
-                    )),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
