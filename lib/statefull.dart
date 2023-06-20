@@ -18,18 +18,16 @@ class _MyHomePageState extends State<MyHomePage> {
   void restart() {
     setState(() {
       text = "Enjoy The Game";
-      currentplayer='X';
+      currentplayer = 'X';
       grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
     });
   }
 
-
   void cross(i) {
     setState(
       () {
-
         if (grid[i] == '-') {
-          winner="";//if winner is not find so winner is null
+          winner = ""; //if winner is not find so winner is null
           grid[i] = currentplayer;
           currentplayer = currentplayer == 'X' ? 'O' : 'X';
         }
@@ -46,8 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void FindWinner(currentsign) {
-    if (
-        check(0, 1, 2, currentsign) ||
+    if (check(0, 1, 2, currentsign) ||
         check(3, 4, 5, currentsign) ||
         check(6, 7, 8, currentsign) || //row
         check(0, 3, 6, currentsign) ||
@@ -61,9 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
         restart();
       });
     }
-
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -77,16 +72,29 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: Column(
             children: [
-              Text("$currentplayer turn",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.amber),),
+              if(winner=="")
+              Text(
+                "$currentplayer turn",
+                style: const TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red),
+              ),
               if (winner != "")
-                Text(
-                  "$winner Winner",
-                  style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green),
+                Container(
+                  height: 100,
+                  width: 500,
+                  color: Colors.green,
+                  child: Center(
+                    child: Text(
+                      "$winner Winner",
+                      style: const TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
                 ),
-
               Container(
                 constraints: const BoxConstraints(
                   maxHeight: 400,
@@ -112,7 +120,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       splashColor: Colors.teal,
                       onTap: () {
                         cross(index);
-
                       },
                       child: Center(
                           child: Text(
@@ -126,7 +133,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-
               Container(
                 decoration: BoxDecoration(color: Colors.white, boxShadow: [
                   BoxShadow(
