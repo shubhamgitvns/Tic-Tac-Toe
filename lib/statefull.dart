@@ -13,18 +13,22 @@ class _MyHomePageState extends State<MyHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
   var winner = "";
   var currentplayer = 'X';
-  var text = "Winner";
-
+  var text = "Enjoy The Game";
   void restart() {
     setState(() {
+      text = "Enjoy The Game";
+      currentplayer='X';
       grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
     });
   }
 
+
   void cross(i) {
     setState(
       () {
+
         if (grid[i] == '-') {
+          winner="";//if winner is not find so winner is null
           grid[i] = currentplayer;
           currentplayer = currentplayer == 'X' ? 'O' : 'X';
         }
@@ -41,7 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void FindWinner(currentsign) {
-    if (check(0, 1, 2, currentsign) ||
+    if (
+        check(0, 1, 2, currentsign) ||
         check(3, 4, 5, currentsign) ||
         check(6, 7, 8, currentsign) || //row
         check(0, 3, 6, currentsign) ||
@@ -69,12 +74,13 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             if (winner != "")
               Text(
-                "$winner $text",
+                "$winner Winner",
                 style: const TextStyle(
-                    fontSize: 40,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.green),
               ),
+
             Container(
               constraints: const BoxConstraints(
                 maxHeight: 400,
@@ -100,6 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     splashColor: Colors.teal,
                     onTap: () {
                       cross(index);
+
                     },
                     child: Center(
                         child: Text(
@@ -129,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
               ]),
               child: SizedBox(
-                height: 50,
+                height: 30,
                 width: 100,
                 child: ElevatedButton(
                     onPressed: () {
