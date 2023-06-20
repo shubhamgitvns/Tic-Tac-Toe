@@ -14,6 +14,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var winner = "";
   var currentplayer = 'X';
   var text = "Enjoy The Game";
+
   void restart() {
     setState(() {
       text = "Enjoy The Game";
@@ -56,10 +57,13 @@ class _MyHomePageState extends State<MyHomePage> {
         check(2, 4, 6, currentsign)) {
       setState(() {
         winner = currentsign;
+
         restart();
       });
     }
+
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           children: [
+            Text("$currentplayer turn",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.amber),),
             if (winner != "")
               Text(
                 "$winner Winner",
@@ -120,6 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
+
             Container(
               decoration: BoxDecoration(color: Colors.white, boxShadow: [
                 BoxShadow(
