@@ -13,11 +13,10 @@ class _MyHomePageState extends State<MyHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
   var winner = "";
   var currentplayer = 'X';
-  var text = "Enjoy The Game";
+  var over = "Game Over";
 
   void restart() {
     setState(() {
-      text = "Enjoy The Game";
       currentplayer = 'X';
       grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
     });
@@ -78,23 +77,45 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: const TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Colors.red),
+                    color: Colors.lightBlue),
               ),
+
               if (winner != "")
-                Container(
-                  height: 100,
-                  width: 500,
-                  color: Colors.green,
-                  child: Center(
-                    child: Text(
-                      "$winner Winner",
-                      style: const TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: 100,
+                    width: 500,
+                    color: Colors.amberAccent,
+                    child: Center(
+                      child: Text(
+                        "$winner Winner",
+                        style: const TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+
                     ),
+
                   ),
                 ),
+
+              if(winner!="")
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Text(
+                      over,
+                      style: const TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red),
+                    ),
+
+                  ),
+                ),
+
               Container(
                 constraints: const BoxConstraints(
                   maxHeight: 400,
