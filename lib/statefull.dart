@@ -14,6 +14,8 @@ class _MyHomePageState extends State<MyHomePage> {
   var winner = "";
   var currentplayer = 'X';
   var over = "Game Over";
+  bool GameEnd=false;
+  int result=0;
 
   void restart() {
     setState(() {
@@ -26,38 +28,155 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(
       () {
         if (grid[i] == '-') {
-          winner = ""; //if winner is not find so winner is null
+          //if program is restart than var again call
+          winner = "";
+          GameEnd=false;
           grid[i] = currentplayer;
           currentplayer = currentplayer == 'X' ? 'O' : 'X';
         }
       },
     );
-    FindWinner(grid[i]);
+
+    result=checkAll();
+
+  }
+int checkLine(int p1,int p2, int p3)
+{
+  int xcount=0,ocount=0;
+
+
+  if(grid[p1]=='X')
+    xcount++;
+  if(grid[p2]=='X')
+    xcount++;
+  if(grid[p3]=='X')
+    xcount++;
+
+  if(grid[p1]=='O')
+    ocount++;
+  if(grid[p2]=='O')
+    ocount++;
+  if(grid[p3]=='O')
+    ocount++;
+if (xcount==3)
+  {
+    GameEnd=true;
+    winner="X";
+    return 1;
+
+
+  }
+if (ocount==3) {
+  GameEnd=true;
+  winner="O";
+  return 2;
+}
+if (xcount>0 && ocount>0)
+  {
+
+    return 3;
   }
 
-  bool check(i1, i2, i3, sign) {
-    if (grid[i1] == sign && grid[i2] == sign && grid[i3] == sign) {
-      return true;
+return 0;
+
+}
+int checkAll()
+{
+  int blockcount=0;
+  int count=checkLine(0, 1, 2);
+  if(count==1){
+    return 1;
+  }
+  if(count==2){
+    return 2;
+  }
+  if(count==3){
+    blockcount++;
+  }
+
+  count=checkLine(3, 4, 5);
+  if(count==1){
+    return 1;
+  }
+  if(count==2){
+    return 2;
+  }
+  if(count==3){
+    blockcount++;
+  }
+
+  count=checkLine(6, 7, 8);
+  if(count==1){
+    return 1;
+  }
+  if(count==2){
+    return 2;
+  }
+  if(count==3){
+    blockcount++;
+  }
+
+  count=checkLine(0, 3, 6);
+  if(count==1){
+    return 1;
+  }
+  if(count==2){
+    return 2;
+  }
+  if(count==3){
+    blockcount++;
+  }
+
+  count=checkLine(1, 4, 7);
+  if(count==1){
+    return 1;
+  }
+  if(count==2){
+    return 2;
+  }
+  if(count==3){
+    blockcount++;
+  }
+
+  count=checkLine(2, 5, 8);
+  if(count==1){
+    return 1;
+  }
+  if(count==2){
+    return 2;
+  }
+  if(count==3){
+    blockcount++;
+  }
+
+  count=checkLine(0, 4, 8);
+  if(count==1){
+    return 1;
+  }
+  if(count==2){
+    return 2;
+  }
+  if(count==3){
+    blockcount++;
+  }
+
+  count=checkLine(2, 4, 6);
+  if(count==1){
+    return 1;
+  }
+  if(count==2){
+    return 2;
+  }
+  if(count==3){
+    blockcount++;
+  }
+  if(blockcount==8)
+    {
+      return 3;
     }
-    return false;
-  }
+  return 0;
+}
 
-  void FindWinner(currentsign) {
-    if (check(0, 1, 2, currentsign) ||
-        check(3, 4, 5, currentsign) ||
-        check(6, 7, 8, currentsign) || //row
-        check(0, 3, 6, currentsign) ||
-        check(1, 4, 7, currentsign) ||
-        check(2, 5, 8, currentsign) || //column
-        check(0, 4, 8, currentsign) ||
-        check(2, 4, 6, currentsign)) {
-      setState(() {
-        winner = currentsign;
-
-        restart();
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +190,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: Column(
             children: [
-              if(winner=="")
+              if(winner=="" && result==0)
               Text(
                 "$currentplayer turn",
                 style: const TextStyle(
@@ -80,13 +199,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: Colors.lightBlue),
               ),
 
-              if (winner != "")
+              if (GameEnd)
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     height: 100,
                     width: 500,
-                    color: Colors.amberAccent,
+                    color: Colors.green,
                     child: Center(
                       child: Text(
                         "$winner Winner",
@@ -101,7 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
 
-              if(winner!="")
+              if(GameEnd)
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Center(
@@ -115,6 +234,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
                   ),
                 ),
+
+              if(result==3)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: 100,
+                    width: 500,
+                    color: Colors.red,
+                    child: const Center(
+                      child: Text(
+                        "Game Draw",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+
+                    ),
+
+                  ),
+                ),
+
+
 
               Container(
                 constraints: const BoxConstraints(
@@ -140,7 +282,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       // if click the icon than work splash color like click button in the css
                       splashColor: Colors.teal,
                       onTap: () {
+
                         cross(index);
+                       // checkLine(p1, p2, p3);
                       },
                       child: Center(
                           child: Text(
