@@ -183,7 +183,7 @@ int checkAll()
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Tic Tac Toe "),
+        title: const Text("Tic Tac Toe ",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
         centerTitle: true,
         shadowColor: Colors.tealAccent,
       ),
@@ -261,19 +261,19 @@ int checkAll()
 
               Container(
                 constraints: const BoxConstraints(
-                  maxHeight: 400,
-                  maxWidth: 400,
+                  maxHeight: 500,
+                  maxWidth: 500,
                 ),
                 margin: const EdgeInsets.all(20),
-                color: Colors.blue[900],
+                color: Colors.lightBlue,
                 child: GridView.builder(
                   //if the background color using extra space than using shrinkwrap
                   // in this app using shrinkwrap in the black color
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    crossAxisSpacing: 5,
-                    mainAxisSpacing: 5,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
                   ),
                   itemCount: grid.length,
                   itemBuilder: (context, index) => Material(
@@ -281,7 +281,7 @@ int checkAll()
                     color: Colors.white,
                     child: InkWell(
                       // if click the icon than work splash color like click button in the css
-                      splashColor: Colors.teal,
+                      splashColor: Colors.grey,
                       onTap: () {
 
                         cross(index);
@@ -315,14 +315,14 @@ int checkAll()
                   )
                 ]),
                 child: SizedBox(
-                  height: 30,
+                  height: 50,
                   width: 100,
                   child: ElevatedButton(
                       onPressed: () {
                         restart();
                       },
                       child: const Text(
-                        "restart",
+                        "Play Again",
                       )),
                 ),
               )

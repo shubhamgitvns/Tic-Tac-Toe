@@ -130,7 +130,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tic Toc Toe',
       theme: ThemeData(
-        primarySwatch: Colors.teal,
+        primarySwatch: Colors.amber,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
