@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiktoktoi/Utilities.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -13,6 +14,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
   var winner = "";
   var currentplayer = 'X';
+  var currentplayername = '${Utilities.firstcontroller.text}';
   var over = "Game Over";
   bool GameEnd=false;
   int result=0;
@@ -20,6 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void restart() {
     setState(() {
       currentplayer = 'X';
+      currentplayername = '${Utilities.firstcontroller.text}';
       grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
     });
   }
@@ -33,6 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
           GameEnd=false;
           grid[i] = currentplayer;
           currentplayer = currentplayer == 'X' ? 'O' : 'X';
+          // grid[i] = currentplayername;
+          currentplayername = currentplayername == '${Utilities.firstcontroller.text}' ? '${Utilities.secondcontroler.text}' : '${Utilities.firstcontroller.text}';
         }
       },
     );
@@ -193,13 +198,19 @@ int checkAll()
             children: [
               if(winner=="" && result==0)
               Text(
-                "$currentplayer turn",
+                "$currentplayername turn",
                 style: const TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: Colors.lightBlue),
               ),
-
+              // Text(
+              //   "${Utilities.firstcontroller.text} ${Utilities.secondcontroler.text} ",
+              //   style: const TextStyle(
+              //       fontSize: 30,
+              //       fontWeight: FontWeight.bold,
+              //       color: Colors.lightBlue),
+              // ),
               if (GameEnd)
                 Padding(
                   padding: const EdgeInsets.all(8.0),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tiktoktoi/statefull.dart';
 
+import 'Utilities.dart';
+
 class IntroPage extends StatelessWidget {
   IntroPage({super.key});
-  final _textcontroller = TextEditingController();
-  final _secondcontroler = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,7 +42,11 @@ class IntroPage extends StatelessWidget {
                       maxWidth: 600,
                     ),
                     child: TextField(
-                      controller: _textcontroller,
+                      onChanged: (String a){
+                        a = Utilities.firstcontroller.text;
+                        print(a);
+                      },
+                      controller: Utilities.firstcontroller,
                       decoration: InputDecoration(
                           hintText: "Enter first player name",
                           filled: true,
@@ -48,7 +54,7 @@ class IntroPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10)),
                           suffixIcon: IconButton(
                             onPressed: () {
-                              _textcontroller.clear(); // _text controller
+                              Utilities.firstcontroller.clear(); // _text controller
                             },
                             //Cross Icon
                             icon: const Icon(Icons.clear),
@@ -68,7 +74,11 @@ class IntroPage extends StatelessWidget {
                       maxHeight: 600,
                     ),
                     child: TextField(
-                      controller: _secondcontroler,
+                      controller: Utilities.secondcontroler,
+                      onChanged: (String b){
+                        b = Utilities.secondcontroler.text;
+                        print(b);
+                      },
                       decoration: InputDecoration(
                           hintText: "Enter second player name",
                           filled: true,
@@ -77,7 +87,7 @@ class IntroPage extends StatelessWidget {
                           ),
                           suffixIcon: IconButton(
                             onPressed: () {
-                              _secondcontroler.clear(); // _text controller
+                              Utilities.secondcontroler.clear(); // _text controller
                             },
                             //Cross Icon
                             icon: const Icon(Icons.clear),
