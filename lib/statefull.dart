@@ -73,7 +73,6 @@ if (ocount==3) {
 }
 if (xcount>0 && ocount>0)
   {
-
     return 3;
   }
 
@@ -170,6 +169,8 @@ int checkAll()
   if(count==3){
     blockcount++;
   }
+  // block count==8 than program come in this condition
+  // This condition show match draw message
   if(blockcount==8)
     {
       return 3;
