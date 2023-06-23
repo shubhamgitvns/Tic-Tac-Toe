@@ -16,13 +16,14 @@ class _MyHomePageState extends State<MyHomePage> {
   var currentplayer = 'X';
   var secondplayer = "O";
   Color currentplayercolorred = Colors.green;
-  Color secondplayercolored = Colors.red;
+  Color secondplayercolorred = Colors.red;
   Color red = Colors.red;
   Color green = Colors.green;
   var currentplayername = '';
   var secondplayername = '';
   var over = "Game Over";
   bool GameEnd = false;
+  bool Gamedraw = false;
   bool showornot = true;
   bool play = false;
   int result = 0;
@@ -30,10 +31,12 @@ class _MyHomePageState extends State<MyHomePage> {
   void restart() {
     setState(() {
       play = false;
+      Gamedraw = false;
       currentplayer = 'X';
       currentplayername = '';
       secondplayername = '';
-      currentplayercolorred = green;
+      currentplayercolorred = currentplayercolorred == green ? red : green;
+      secondplayercolorred = secondplayercolorred == red ? green : red;
       grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
     });
   }
@@ -48,13 +51,9 @@ class _MyHomePageState extends State<MyHomePage> {
           grid[i] = currentplayer;
           currentplayer = currentplayer == 'X' ? 'O' : 'X';
           currentplayercolorred = currentplayercolorred == green ? red : green;
-          secondplayercolored = secondplayercolored == red ? green : red;
-          ;
-
+          secondplayercolorred = secondplayercolorred == red ? green : red;
           currentplayername = Utilities.firstcontroller.text;
           secondplayername = Utilities.secondcontroler.text;
-
-          // grid[i] = currentplayername;
         }
       },
     );
@@ -68,7 +67,6 @@ class _MyHomePageState extends State<MyHomePage> {
     if (grid[p1] == 'X') xcount++;
     if (grid[p2] == 'X') xcount++;
     if (grid[p3] == 'X') xcount++;
-
     if (grid[p1] == 'O') ocount++;
     if (grid[p2] == 'O') ocount++;
     if (grid[p3] == 'O') ocount++;
@@ -183,6 +181,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // block count==8 than program come in this condition
     // This condition show match draw message
     if (blockcount == 8) {
+      Gamedraw = true;
       return 3;
     }
     return 0;
@@ -222,7 +221,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: secondplayercolored,
+                        color: secondplayercolorred,
                       ),
                     ),
                 ],
@@ -273,6 +272,19 @@ class _MyHomePageState extends State<MyHomePage> {
                             fontWeight: FontWeight.bold,
                             color: Colors.white),
                       ),
+                    ),
+                  ),
+                ),
+              if (Gamedraw)
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Text(
+                      "Play again",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green),
                     ),
                   ),
                 ),
