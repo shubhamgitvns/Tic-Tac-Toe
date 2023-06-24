@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:tiktoktoi/Utilities.dart';
 
@@ -12,6 +14,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
+  var j = [1, 2, 3, 4, 5];
   var winner = "";
   var currentplayer = 'X';
   var secondplayer = "O";
@@ -41,6 +44,14 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void Computer_maker(i) {
+    setState(() {
+      currentplayer="X";
+      grid[i+1]=secondplayer;
+      cross(i);
+    });
+  }
+
   void cross(i) {
     setState(
       () {
@@ -49,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
           winner = "";
           GameEnd = false;
           grid[i] = currentplayer;
+          // grid[i+1] = secondplayer;
           currentplayer = currentplayer == 'X' ? 'O' : 'X';
           currentplayercolorred = currentplayercolorred == green ? red : green;
           secondplayercolorred = secondplayercolorred == red ? green : red;
@@ -85,7 +97,6 @@ class _MyHomePageState extends State<MyHomePage> {
     if (xcount > 0 && ocount > 0) {
       return 3;
     }
-
     return 0;
   }
 
@@ -203,6 +214,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: Column(
             children: [
+              Text(currentplayer),
+              if (currentplayer == 'O') Text(secondplayer),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -226,6 +240,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                 ],
               ),
+
               if (GameEnd)
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -315,9 +330,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         // if click the icon than work splash color like click button in the css
                         splashColor: Colors.grey,
                         onTap: () {
-                          play = true;
+                         // play = true;
                           cross(index);
-                          // checkLine(p1, p2, p3);
+                          if(currentplayer=="O")
+                            {
+                              setState(() {
+                                Computer_maker(index);
+                              });
+                            }
+                          // // checkLine(p1, p2, p3);
                         },
                         child: Center(
                             child: Text(
