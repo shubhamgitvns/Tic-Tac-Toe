@@ -14,16 +14,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
-  var j = [1, 2, 3, 4, 5];
   var winner = "";
   var currentplayer = 'X';
   var secondplayer = "O";
-  Color currentplayercolorred = Colors.green;
-  Color secondplayercolorred = Colors.red;
-  Color red = Colors.red;
-  Color green = Colors.green;
   var currentplayername = '';
-  var secondplayername = '';
   var over = "Game Over";
   bool GameEnd = false;
   bool Gamedraw = false;
@@ -37,19 +31,36 @@ class _MyHomePageState extends State<MyHomePage> {
       Gamedraw = false;
       currentplayer = 'X';
       currentplayername = '';
-      secondplayername = '';
-      currentplayercolorred = currentplayercolorred == green ? red : green;
-      secondplayercolorred = secondplayercolorred == red ? green : red;
       grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
     });
   }
 
   void Computer_maker(i) {
+    if (checkAll() != 0) {
+      return;
+    }
+    if(result==8){
+      Gamedraw=true;
+    }
     setState(() {
-      currentplayer="X";
-      grid[i+1]=secondplayer;
-      cross(i);
+      currentplayer = "X";
+      int num = Random().nextInt(8);
+      while (isOccupied(num)) {
+        num = Random().nextInt(8);
+      }
+      if (grid[num] == "-") {
+        print("Valid");
+        print(num);
+        grid[num] = secondplayer;
+        return;
+      }
+
     });
+  }
+
+  bool isOccupied(int pos) {
+    if (grid[pos] != '-') return true;
+    return false;
   }
 
   void cross(i) {
@@ -60,12 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
           winner = "";
           GameEnd = false;
           grid[i] = currentplayer;
-          // grid[i+1] = secondplayer;
           currentplayer = currentplayer == 'X' ? 'O' : 'X';
-          currentplayercolorred = currentplayercolorred == green ? red : green;
-          secondplayercolorred = secondplayercolorred == red ? green : red;
           currentplayername = Utilities.firstcontroller.text;
-          secondplayername = Utilities.secondcontroler.text;
         }
       },
     );
@@ -75,7 +82,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int checkLine(int p1, int p2, int p3) {
     int xcount = 0, ocount = 0;
-
     if (grid[p1] == 'X') xcount++;
     if (grid[p2] == 'X') xcount++;
     if (grid[p3] == 'X') xcount++;
@@ -91,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (ocount == 3) {
       GameEnd = true;
       showornot = false;
-      winner = secondplayername;
+      winner = "Computer";
       return 2;
     }
     if (xcount > 0 && ocount > 0) {
@@ -214,32 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: Column(
             children: [
-              Text(currentplayer),
-              if (currentplayer == 'O') Text(secondplayer),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  if (play && winner == "" && result == 0)
-                    Text(
-                      "Player X:- $currentplayername",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: currentplayercolorred,
-                      ),
-                    ),
-                  if (play && winner == "" && result == 0)
-                    Text(
-                      "Player O:- $secondplayername",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: secondplayercolorred,
-                      ),
-                    ),
-                ],
-              ),
 
               if (GameEnd)
                 Padding(
@@ -330,14 +311,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         // if click the icon than work splash color like click button in the css
                         splashColor: Colors.grey,
                         onTap: () {
-                         // play = true;
+                           play = true;
                           cross(index);
-                          if(currentplayer=="O")
-                            {
-                              setState(() {
-                                Computer_maker(index);
-                              });
-                            }
+                          if (currentplayer == "O") {
+                            setState(() {
+                              Computer_maker(index);
+                            });
+                          }
                           // // checkLine(p1, p2, p3);
                         },
                         child: Center(

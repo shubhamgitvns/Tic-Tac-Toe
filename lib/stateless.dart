@@ -4,7 +4,7 @@ import 'package:tiktoktoi/statefull.dart';
 import 'Utilities.dart';
 
 class IntroPage extends StatelessWidget {
-  IntroPage({super.key});
+  const IntroPage({super.key});
 
 
   @override
@@ -63,39 +63,7 @@ class IntroPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
 
-                  //Text field icon
-                  child: Container(
-                    constraints: const BoxConstraints(
-                      maxWidth: 600,
-                      maxHeight: 600,
-                    ),
-                    child: TextField(
-                      controller: Utilities.secondcontroler,
-                      onChanged: (String b){
-                        b = Utilities.secondcontroler.text;
-                        print(b);
-                      },
-                      decoration: InputDecoration(
-                          hintText: "Enter second player name",
-                          filled: true,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              Utilities.secondcontroler.clear(); // _text controller
-                            },
-                            //Cross Icon
-                            icon: const Icon(Icons.clear),
-                          )),
-                    ),
-                  ),
-                ),
-              ),
               Container(
                 decoration: BoxDecoration(color: Colors.white, boxShadow: [
                   BoxShadow(
