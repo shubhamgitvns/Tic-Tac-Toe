@@ -39,9 +39,10 @@ class _MyHomePageState extends State<MyHomePage> {
     if (checkAll() != 0) {
       return;
     }
-    if(result==8){
-      Gamedraw=true;
+    if (result == 8) {
+      Gamedraw = true;
     }
+
     setState(() {
       currentplayer = "X";
       int num = Random().nextInt(8);
@@ -52,9 +53,9 @@ class _MyHomePageState extends State<MyHomePage> {
         print("Valid");
         print(num);
         grid[num] = secondplayer;
+        checkAll();
         return;
       }
-
     });
   }
 
@@ -220,8 +221,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: Column(
             children: [
-
-
               if (GameEnd)
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -311,7 +310,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         // if click the icon than work splash color like click button in the css
                         splashColor: Colors.grey,
                         onTap: () {
-                           play = true;
+                          play = true;
                           cross(index);
                           if (currentplayer == "O") {
                             setState(() {
