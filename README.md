@@ -39,5 +39,14 @@ I have tried adding few more things to that.
  
  </ul>
 </h5>
-
+<h1>Features</h1>
+<ul>
+  <li>Playing With Human Mode</li>
+ <li>Playing With Computer Mode</li>
+ <li>Beautiful UI</li>
+ <li>Multiple Pages</li>
+<li>Sound Effects</li>
+ <li>Show Winner Name</li>
+ <li>Light Effects</li>
+</ul>
 
