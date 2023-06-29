@@ -13,5 +13,26 @@
  <li> Win Detection: After each move, the app checks if a player has won the game by having three of their marks in a row or column. If a win condition is true, the app declares the winner name and ends the game.</li>
  <li>Draw Detection: If all the cells are filled and no player has won, the game is declared a draw.</li>
 </ul>
+<h1>About The App</h1>
+<h5>
+ <h5>This  Tic Tac Toe game which i have build while using dart/flutter programing language.</h5>
+ In this game there are two modes one of which a user can choose at a time to play.
+ <ul>
+  <li>First mode is to play with a computer in which you are there to play against a computer.</li>
+  <li>The secod mode is the human mode in which two humans play agains each other.</li>
+ </ul>
+Like every other game it has three parameters for result i.e. Win, Lose, Tie which are decided at the end of each game accordingly. 
+I have tried adding few more things to that.
+<h4>Things which are done in the app involve:</h4>
+ <ul>
+  <li>MaterialApp design.</li>
+  <li>Scaffold Class.</li>
+  <li>AppBar.</li>
+  <li>StatefulWidget </li>
+  <li>StatelessWidget</li>
+  <li>Initial Root</li>
+ 
+ </ul>
+</h5>
 
 
