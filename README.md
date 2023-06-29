@@ -25,12 +25,17 @@ Like every other game it has three parameters for result i.e. Win, Lose, Tie whi
 I have tried adding few more things to that.
 <h4>Things which are done in the app involve:</h4>
  <ul>
+   <li>Initial Route</li>
   <li>MaterialApp design.</li>
   <li>Scaffold Class.</li>
   <li>AppBar.</li>
   <li>StatefulWidget </li>
   <li>StatelessWidget</li>
-  <li>Initial Root</li>
+  <li>Singlechildscrollview</li>
+  <li>GridView</li>
+  <li>Visibility</li>
+  <li>Inkwell Button</li>
+  <li>Eleveted Button</li>
  
  </ul>
 </h5>
