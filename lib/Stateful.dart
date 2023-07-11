@@ -32,12 +32,14 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
   bool showornot = false;
   bool play = false;
   bool showbtn=false;
+  bool timeover=false;// using time over message
   int result = 0;
-  int _Counter=60;
+  int _Counter=20;
   late Timer _timer;
+
  // All function using in the app
  void startTimer(){
-   _Counter=60;
+   _Counter=20;
    _timer=Timer.periodic(Duration(seconds:1),(timer) {
      if(_Counter>0){
        setState(() {
@@ -46,6 +48,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
      } else{
        setState(() {
          showornot=false;
+         timeover=true; //change the bool value here on timeover
          _timer.cancel();
        });
 
@@ -272,7 +275,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  if (play && winner == "" && result == 0)
+                  if (showornot)
                     Text(
                       "Player X:- $currentplayername",
                       style: TextStyle(
@@ -281,7 +284,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                         color: currentplayercolorred,
                       ),
                     ),
-                  if (play && winner == "" && result == 0)
+                  if (showornot)
                     Text(
                       "Player O:- $secondplayername",
                       style: TextStyle(
@@ -354,6 +357,19 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                     ),
                   ),
                 ),
+              if(timeover) // if time is over than show this message
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Text(
+                      "Ops!s Time Is Over",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red),
+                    ),
+                  ),
+                ),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: Container(
@@ -366,7 +382,6 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                       colors: [
                       Color(0xffb74093),
                         Color(0xff123456),
-                        //Color( #1BFFFF),
                       ],
                     ),
                   ),
@@ -454,7 +469,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                   ),
                 ),
               ),
-              if(GameEnd || Gamedraw)
+              if(GameEnd || Gamedraw || timeover)
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
