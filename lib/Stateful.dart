@@ -31,9 +31,11 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
   bool Gamedraw = false;
   bool showornot = false;
   bool play = false;
+  bool showbtn=false;
   int result = 0;
   int _Counter=60;
   late Timer _timer;
+ // All function using in the app
  void startTimer(){
    _Counter=60;
    _timer=Timer.periodic(Duration(seconds:1),(timer) {
@@ -131,12 +133,16 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
     if (xcount == 3) {
       GameEnd = true;
       showornot = false;
+      // if winner is find than time is stop
+      _timer.cancel();
       winner = currentplayername;
       return 1;
     }
     if (ocount == 3) {
       GameEnd = true;
       showornot = false;
+      // if winner is find than time is stop
+      _timer.cancel();
       winner = secondplayername;
       return 2;
     }
@@ -239,6 +245,8 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
     // This condition show match draw message
     if (blockcount == 8) {
       Gamedraw = true;
+    //if game draw than time is stop
+      _timer.cancel();
       return 3;
     }
     return 0;
@@ -346,6 +354,26 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                     ),
                   ),
                 ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Container(
+                  width: 250,
+                  height: 50,
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                      Color(0xffb74093),
+                        Color(0xff123456),
+                        //Color( #1BFFFF),
+                      ],
+                    ),
+                  ),
+
+                  child: Center(child: Text("Time Remaining: $_Counter",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),)),
+                ),
+              ),
               Visibility(
                 visible: showornot,
                 child: Container(
@@ -392,36 +420,38 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                 ),
               ),
 
+
+              if(showbtn!=true)
               Padding(
-                padding: const EdgeInsets.only(top: 150),
-                child: Text("$_Counter",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
-              ),
-              Container(
-                decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.shade500,
-                    offset: const Offset(2.0, 2.0),
-                    blurRadius: 10,
-                    spreadRadius: 1.0,
+                padding: const EdgeInsets.only(top: 200),
+                child: Container(
+                  decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade500,
+                      offset: const Offset(2.0, 2.0),
+                      blurRadius: 10,
+                      spreadRadius: 1.0,
+                    ),
+                    BoxShadow(
+                      color: Colors.grey.shade300,
+                      offset: const Offset(-2.0, -2.0),
+                      blurRadius: 10,
+                      spreadRadius: 1.0,
+                    )
+                  ]),
+                  child: SizedBox(
+                    height: 50,
+                    width: 100,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          startTimer();
+                          showbtn = true;
+                          showornot = true;
+                        },
+                        child: const Text(
+                          "Play",
+                        )),
                   ),
-                  BoxShadow(
-                    color: Colors.grey.shade300,
-                    offset: const Offset(-2.0, -2.0),
-                    blurRadius: 10,
-                    spreadRadius: 1.0,
-                  )
-                ]),
-                child: SizedBox(
-                  height: 50,
-                  width: 100,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        startTimer();
-                        showornot = true;
-                      },
-                      child: const Text(
-                        "Play",
-                      )),
                 ),
               ),
               if(GameEnd || Gamedraw)
