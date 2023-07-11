@@ -389,6 +389,7 @@ class PlayersIntroPage extends StatelessWidget {
                   width: 100,
                   child: ElevatedButton(
                       onPressed: () {
+                        //startTimer();
                         print("play");
                         Navigator.pushNamed(context, '/sixth');
                       },

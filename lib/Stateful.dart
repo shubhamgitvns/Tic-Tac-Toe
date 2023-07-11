@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
   var winner = "";
   var currentplayer = 'X';
-  var secondplayer = "O";
+ // var secondplayer = "O";
   Color currentplayercolorred = Colors.green;
   Color secondplayercolorred = Colors.red;
   Color red = Colors.red;
@@ -28,12 +29,60 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
   var over = "Game Over";
   bool GameEnd = false;
   bool Gamedraw = false;
-  bool showornot = true;
+  bool showornot = false;
   bool play = false;
   int result = 0;
+  int _Counter=60;
+  late Timer _timer;
+ void startTimer(){
+   _Counter=60;
+   _timer=Timer.periodic(Duration(seconds:1),(timer) {
+     if(_Counter>0){
+       setState(() {
+         _Counter--;
+       });
+     } else{
+       setState(() {
+         showornot=false;
+         _timer.cancel();
+       });
+
+     }
+   });
+ }
+
+  void Score(){
+    setState(() {
+
+      // if(grid[0]=="X"){
+      //  scoreX = scoreX+=3;
+      //   print("player x=$scoreX");
+      // }
+
+      // if(grid[0]=="O"){
+      //   scoreY=scoreY+=3;
+      //   print("player y=$scoreY");
+      // }
+
+      // if(grid[2]=="X"){
+      //   scoreX=scoreX+=3;
+      //   print("player x=$scoreX");
+      // }
+
+      // if(grid[2]=="O"){
+      //  scoreY= scoreY+=3;
+      //   print("player y=$scoreY");
+      // }
+
+          });
+
+
+  }
 
   void restart() {
     setState(() {
+      _timer.cancel();
+      startTimer();
       play = false;
       Gamedraw = false;
       currentplayer = 'X';
@@ -48,12 +97,16 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
   void cross(i) {
     setState(
           () {
+
         if (grid[i] == '-') {
           //if program is restart than var again call
+
           winner = "";
           GameEnd = false;
           grid[i] = currentplayer;
           currentplayer = currentplayer == 'X' ? 'O' : 'X';
+          //Score();
+          print(currentplayer);
           currentplayercolorred = currentplayercolorred == green ? red : green;
           secondplayercolorred = secondplayercolorred == red ? green : red;
           currentplayername = Utilities.firstcontroller.text;
@@ -63,6 +116,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
     );
 
     result = checkAll();
+
   }
 
   int checkLine(int p1, int p2, int p3) {
@@ -89,7 +143,6 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
     if (xcount > 0 && ocount > 0) {
       return 3;
     }
-
     return 0;
   }
 
@@ -206,6 +259,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
       body: SingleChildScrollView(
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -321,6 +375,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                         onTap: () {
                           play = true;
                           cross(index);
+                          Score();
                           // checkLine(p1, p2, p3);
                         },
                         child: Center(
@@ -335,6 +390,11 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                     ),
                   ),
                 ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(top: 150),
+                child: Text("$_Counter",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
               ),
               Container(
                 decoration: BoxDecoration(color: Colors.white, boxShadow: [
@@ -356,12 +416,44 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                   width: 100,
                   child: ElevatedButton(
                       onPressed: () {
-                        restart();
+                        startTimer();
                         showornot = true;
                       },
                       child: const Text(
-                        "Play Again",
+                        "Play",
                       )),
+                ),
+              ),
+              if(GameEnd || Gamedraw)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade500,
+                      offset: const Offset(2.0, 2.0),
+                      blurRadius: 10,
+                      spreadRadius: 1.0,
+                    ),
+                    BoxShadow(
+                      color: Colors.grey.shade300,
+                      offset: const Offset(-2.0, -2.0),
+                      blurRadius: 10,
+                      spreadRadius: 1.0,
+                    )
+                  ]),
+                  child: SizedBox(
+                    height: 50,
+                    width: 100,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          restart();
+                          showornot = true;
+                        },
+                        child: const Text(
+                          "Play Again",
+                        )),
+                  ),
                 ),
               )
             ],
@@ -701,6 +793,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
+              Text("Counter"),
               Container(
                 decoration: BoxDecoration(color: Colors.white, boxShadow: [
                   BoxShadow(
