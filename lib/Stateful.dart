@@ -19,7 +19,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
   var winner = "";
   var currentplayer = 'X';
- // var secondplayer = "O";
+  // var secondplayer = "O";
   Color currentplayercolorred = Colors.green;
   Color secondplayercolorred = Colors.red;
   Color red = Colors.red;
@@ -31,34 +31,32 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
   bool Gamedraw = false;
   bool showornot = false;
   bool play = false;
-  bool showbtn=false;
-  bool timeover=false;// using time over message
+  bool showbtn = false;
+  bool timeover = false; // using time over message
   int result = 0;
-  int _Counter=20;
+  int _Counter = 20;
   late Timer _timer;
 
- // All function using in the app
- void startTimer(){
-   _Counter=20;
-   _timer=Timer.periodic(Duration(seconds:1),(timer) {
-     if(_Counter>0){
-       setState(() {
-         _Counter--;
-       });
-     } else{
-       setState(() {
-         showornot=false;
-         timeover=true; //change the bool value here on timeover
-         _timer.cancel();
-       });
+  // All function using in the app
+  void startTimer() {
+    _Counter = 20;
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (_Counter > 0) {
+        setState(() {
+          _Counter--;
+        });
+      } else {
+        setState(() {
+          showornot = false;
+          timeover = true; //change the bool value here on timeover
+          _timer.cancel();
+        });
+      }
+    });
+  }
 
-     }
-   });
- }
-
-  void Score(){
+  void Score() {
     setState(() {
-
       // if(grid[0]=="X"){
       //  scoreX = scoreX+=3;
       //   print("player x=$scoreX");
@@ -78,10 +76,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
       //  scoreY= scoreY+=3;
       //   print("player y=$scoreY");
       // }
-
-          });
-
-
+    });
   }
 
   void restart() {
@@ -101,8 +96,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
 
   void cross(i) {
     setState(
-          () {
-
+      () {
         if (grid[i] == '-') {
           //if program is restart than var again call
 
@@ -121,7 +115,6 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
     );
 
     result = checkAll();
-
   }
 
   int checkLine(int p1, int p2, int p3) {
@@ -248,7 +241,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
     // This condition show match draw message
     if (blockcount == 8) {
       Gamedraw = true;
-    //if game draw than time is stop
+      //if game draw than time is stop
       _timer.cancel();
       return 3;
     }
@@ -357,7 +350,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                     ),
                   ),
                 ),
-              if(timeover) // if time is over than show this message
+              if (timeover) // if time is over than show this message
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Center(
@@ -380,13 +373,19 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                      Color(0xffb74093),
+                        Color(0xffb74093),
                         Color(0xff123456),
                       ],
                     ),
                   ),
-
-                  child: Center(child: Text("Time Remaining: $_Counter",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),)),
+                  child: Center(
+                      child: Text(
+                    "Time Remaining: $_Counter",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  )),
                 ),
               ),
               Visibility(
@@ -403,7 +402,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                     // in this app using shrinkwrap in the black color
                     shrinkWrap: true,
                     gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
@@ -423,84 +422,82 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                         },
                         child: Center(
                             child: Text(
-                              grid[index],
-                              style: const TextStyle(
-                                  fontSize: 50,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.teal),
-                            )),
+                          grid[index],
+                          style: const TextStyle(
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.teal),
+                        )),
                       ),
                     ),
                   ),
                 ),
               ),
-
-
-              if(showbtn!=true)
-              Padding(
-                padding: const EdgeInsets.only(top: 200),
-                child: Container(
-                  decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade500,
-                      offset: const Offset(2.0, 2.0),
-                      blurRadius: 10,
-                      spreadRadius: 1.0,
+              if (showbtn != true)
+                Padding(
+                  padding: const EdgeInsets.only(top: 200),
+                  child: Container(
+                    decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade500,
+                        offset: const Offset(2.0, 2.0),
+                        blurRadius: 10,
+                        spreadRadius: 1.0,
+                      ),
+                      BoxShadow(
+                        color: Colors.grey.shade300,
+                        offset: const Offset(-2.0, -2.0),
+                        blurRadius: 10,
+                        spreadRadius: 1.0,
+                      )
+                    ]),
+                    child: SizedBox(
+                      height: 50,
+                      width: 100,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            startTimer();
+                            showbtn = true;
+                            showornot = true;
+                          },
+                          child: const Text(
+                            "Play",
+                          )),
                     ),
-                    BoxShadow(
-                      color: Colors.grey.shade300,
-                      offset: const Offset(-2.0, -2.0),
-                      blurRadius: 10,
-                      spreadRadius: 1.0,
-                    )
-                  ]),
-                  child: SizedBox(
-                    height: 50,
-                    width: 100,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          startTimer();
-                          showbtn = true;
-                          showornot = true;
-                        },
-                        child: const Text(
-                          "Play",
-                        )),
                   ),
                 ),
-              ),
-              if(GameEnd || Gamedraw || timeover)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade500,
-                      offset: const Offset(2.0, 2.0),
-                      blurRadius: 10,
-                      spreadRadius: 1.0,
+              if (GameEnd || Gamedraw || timeover)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade500,
+                        offset: const Offset(2.0, 2.0),
+                        blurRadius: 10,
+                        spreadRadius: 1.0,
+                      ),
+                      BoxShadow(
+                        color: Colors.grey.shade300,
+                        offset: const Offset(-2.0, -2.0),
+                        blurRadius: 10,
+                        spreadRadius: 1.0,
+                      )
+                    ]),
+                    child: SizedBox(
+                      height: 50,
+                      width: 100,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            restart();
+                            showornot = true;
+                          },
+                          child: const Text(
+                            "Play Again",
+                          )),
                     ),
-                    BoxShadow(
-                      color: Colors.grey.shade300,
-                      offset: const Offset(-2.0, -2.0),
-                      blurRadius: 10,
-                      spreadRadius: 1.0,
-                    )
-                  ]),
-                  child: SizedBox(
-                    height: 50,
-                    width: 100,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          restart();
-                          showornot = true;
-                        },
-                        child: const Text(
-                          "Play Again",
-                        )),
                   ),
-                ),
-              )
+                )
             ],
           ),
         ),
@@ -508,10 +505,6 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
     );
   }
 }
-
-
-
-
 
 //*************** Computer Mode state full widget**************//
 class MyHomePage extends StatefulWidget {
@@ -526,39 +519,37 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var grid = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
   var winner = "";
-  var currentplayer = 'X';
-  var secondplayer = "O";
+  var currentplayer = 'O';
+  var secondplayer = "X";
   var currentplayername = '';
   var over = "Game Over";
   bool GameEnd = false;
   bool Gamedraw = false;
   bool showornot = false;
   bool play = false;
-  bool timeover=false;
-  bool showbtn=false;
+  bool timeover = false;
+  bool showbtn = false;
   int result = 0;
-  int _Counter=20;
+  int _Counter = 20;
   late Timer _timer;
 
   // All function using in the app
-  void startTimer(){
-    _Counter=20;
-    _timer=Timer.periodic(Duration(seconds:1),(timer) {
-      if(_Counter>0){
+  void startTimer() {
+    _Counter = 20;
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (_Counter > 0) {
         setState(() {
           _Counter--;
         });
-      } else{
+      } else {
         setState(() {
-          showornot=false;
-          timeover=true; //change the bool value here on timeover
+          showornot = false;
+          timeover = true; //change the bool value here on timeover
           _timer.cancel();
         });
-
       }
     });
   }
-
 
   void restart() {
     setState(() {
@@ -582,10 +573,13 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     setState(() {
-      currentplayer = "X";
+      currentplayer = "O";
       int num = Random().nextInt(8);
       while (isOccupied(num)) {
         num = Random().nextInt(8);
+      }
+      if(grid[0]=="X"|| grid[1]=="X"){
+        grid[3]=secondplayer;
       }
       if (grid[num] == "-") {
         print("Valid");
@@ -594,6 +588,7 @@ class _MyHomePageState extends State<MyHomePage> {
         checkAll();
         return;
       }
+
     });
   }
 
@@ -604,7 +599,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void cross(i) {
     setState(
-          () {
+      () {
         if (grid[i] == '-') {
           //if program is restart than var again call
           winner = "";
@@ -762,7 +757,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: Column(
             children: [
-
+              Text(currentplayer),
               if (GameEnd)
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -825,7 +820,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-              if(timeover) // if time is over than show this message
+              if (timeover) // if time is over than show this message
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Center(
@@ -853,11 +848,16 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                   ),
-
-                  child: Center(child: Text("Time Remaining: $_Counter",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),)),
+                  child: Center(
+                      child: Text(
+                    "Time Remaining: $_Counter",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  )),
                 ),
               ),
-
               Visibility(
                 visible: showornot,
                 child: Container(
@@ -872,7 +872,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     // in this app using shrinkwrap in the black color
                     shrinkWrap: true,
                     gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
@@ -887,7 +887,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         onTap: () {
                           play = true;
                           cross(index);
-                          if (currentplayer == "O") {
+                          if (currentplayer == "X") {
                             setState(() {
                               Computer_maker(index);
                             });
@@ -896,18 +896,18 @@ class _MyHomePageState extends State<MyHomePage> {
                         },
                         child: Center(
                             child: Text(
-                              grid[index],
-                              style: const TextStyle(
-                                  fontSize: 50,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.teal),
-                            )),
+                          grid[index],
+                          style: const TextStyle(
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.teal),
+                        )),
                       ),
                     ),
                   ),
                 ),
               ),
-              if(showbtn!=true)
+              if (showbtn != true)
                 Padding(
                   padding: const EdgeInsets.only(top: 200),
                   child: Container(
@@ -940,43 +940,41 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-              if(GameEnd || Gamedraw || timeover)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade500,
-                      offset: const Offset(2.0, 2.0),
-                      blurRadius: 10,
-                      spreadRadius: 1.0,
+              if (GameEnd || Gamedraw || timeover)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade500,
+                        offset: const Offset(2.0, 2.0),
+                        blurRadius: 10,
+                        spreadRadius: 1.0,
+                      ),
+                      BoxShadow(
+                        color: Colors.grey.shade300,
+                        offset: const Offset(-2.0, -2.0),
+                        blurRadius: 10,
+                        spreadRadius: 1.0,
+                      )
+                    ]),
+                    child: SizedBox(
+                      height: 50,
+                      width: 100,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            restart();
+                            showornot = true;
+                          },
+                          child: const Text(
+                            "Play Again",
+                          )),
                     ),
-                    BoxShadow(
-                      color: Colors.grey.shade300,
-                      offset: const Offset(-2.0, -2.0),
-                      blurRadius: 10,
-                      spreadRadius: 1.0,
-                    )
-                  ]),
-                  child: SizedBox(
-                    height: 50,
-                    width: 100,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          restart();
-                          showornot = true;
-                        },
-                        child: const Text(
-                          "Play Again",
-                        )),
                   ),
                 ),
-              ),
-
             ],
           ),
         ),
-
       ),
     );
   }
