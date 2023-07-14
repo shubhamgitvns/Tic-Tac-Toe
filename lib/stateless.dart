@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'Stateful.dart';
 import 'Utilites.dart';
 
+//********** Welcome Page************************************
 class WelcomPage extends StatelessWidget {
   const WelcomPage({super.key});
 
@@ -92,7 +93,7 @@ class WelcomPage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     // Navigate to the game screen
-                    Navigator.pushNamed(context, '/second');
+                    Navigator.pushNamed(context, '/optionalpage');
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.amberAccent,
@@ -119,6 +120,7 @@ class WelcomPage extends StatelessWidget {
     );
   }
 }
+//****************Optional page**********************************
 
 class OptionalPage extends StatelessWidget {
   const OptionalPage({super.key});
@@ -210,7 +212,7 @@ class OptionalPage extends StatelessWidget {
                        child: Center(
                          child: ElevatedButton(
                            onPressed: () {
-                             Navigator.pushNamed(context, '/fifth');
+                             Navigator.pushNamed(context, '/humanmode');
                            },
                            style: ElevatedButton.styleFrom(
                              primary: Colors.amberAccent,
@@ -235,7 +237,7 @@ class OptionalPage extends StatelessWidget {
                        child: ElevatedButton(
                          onPressed: () {
                            // Navigate to the game screen
-                           Navigator.pushNamed(context, '/third');
+                           Navigator.pushNamed(context, '/computermode');
                          },
                          style: ElevatedButton.styleFrom(
                            primary: Colors.amberAccent,
@@ -275,7 +277,7 @@ class OptionalPage extends StatelessWidget {
     );
   }
 }
-//*************Player Intro Page*******************************//
+//*************Human player name Intro Page*******************************//
 class PlayersIntroPage extends StatelessWidget {
    PlayersIntroPage({super.key});
 
@@ -391,7 +393,7 @@ class PlayersIntroPage extends StatelessWidget {
                       onPressed: () {
                         //startTimer();
                         print("play");
-                        Navigator.pushNamed(context, '/sixth');
+                        Navigator.pushNamed(context, '/humanmodeplay');
                       },
                       child: const Text(
                         "Play",
@@ -403,26 +405,7 @@ class PlayersIntroPage extends StatelessWidget {
     );
   }
 }
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Tic Toc Toe',
-      theme: ThemeData(
-        primarySwatch: Colors.amber,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-
-//************** Computer Intro page***********************//
+//*************Computer player name Intro page
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
 
@@ -505,7 +488,7 @@ class IntroPage extends StatelessWidget {
                   child: ElevatedButton(
                       onPressed: () {
                         print("play");
-                        Navigator.pushNamed(context, '/fourth');
+                        Navigator.pushNamed(context, '/Choose_tern');
                       },
                       child: const Text(
                         "Play",
@@ -514,6 +497,162 @@ class IntroPage extends StatelessWidget {
               )
             ],
           )),
+    );
+  }
+}
+//************* Choose tern ************************************//
+class ChooseTern extends StatelessWidget {
+  const ChooseTern({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0xFF09203e),
+                Color(0xFF537895),
+              ],
+            ),
+          ),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 29),
+                const Text(
+                  'Choose The First Tern',
+                  style: TextStyle(
+                    fontSize: 48,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    letterSpacing: 1.5,
+                  ),
+                ),
+                const SizedBox(height: 29),
+                const Text(
+                  'Whos Will Take First Step ',
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.lightBlue,
+                    letterSpacing: 1.5,
+                  ),
+                ),
+                //const SizedBox(height: 32),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: Center(
+                            child: SizedBox(
+                                height: 100,
+                                child: Image.network(
+                                    'https://media.istockphoto.com/id/1097309742/vector/versus-screen-vs-battle-headline-conflict-duel-between-teams-confrontation-fight-competition.jpg?s=612x612&w=0&k=20&c=ZWrDXhVdD7TbqE_kzUVispiX5eN6tHDg0DvmVSUv8mg='))),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: Center(
+                            child: SizedBox(
+                                height: 100,
+                                child: Image.network(
+                                    'https://media.istockphoto.com/id/937014004/vector/video-game-controller-icon-flat.jpg?s=612x612&w=0&k=20&c=Nxvg6dESxXCPIf29MlN8mwervkn7G2JwMbeTHP6RGAc='))),
+                      ),
+                    ),
+                  ],
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/Human_Tern_Play');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.amberAccent,
+                            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                          ),
+                          child: const Text(
+                            'Human',
+                            style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white
+                              // color: Color(0xFF09203f),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Navigate to the game screen
+                          Navigator.pushNamed(context, '/Computer_Tern_Play');
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.amberAccent,
+                          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        child: const Text(
+                          'Computer',
+                          style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white
+
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 32),
+                const Text(
+                  'Get ready to play!',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

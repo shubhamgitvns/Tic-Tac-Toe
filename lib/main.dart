@@ -1,5 +1,8 @@
 
+import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'package:tiktoktoi/Stateful.dart';
 import 'package:tiktoktoi/stateless.dart';
 
 
@@ -9,11 +12,15 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) =>  const WelcomPage(),
-      '/second': (context) => const OptionalPage(),
-      '/third':(context) => const IntroPage(),
-      '/fourth':(context) => const MyApp(),
-      '/fifth':(context) => PlayersIntroPage(),
-      '/sixth':(context) =>const MyFirstApp(),
+      '/optionalpage': (context) => const OptionalPage(),
+      '/computermode':(context) => const IntroPage(),
+      //'/computermodeplay':(context) => const MyApp(),
+      '/humanmode':(context) => PlayersIntroPage(),
+      '/humanmodeplay':(context) =>const MyFirstApp(),
+      '/Choose_tern':(context)=>const ChooseTern(),
+      '/Human_Tern_Play':(context)=>const MyHomePage(title: 'Flutter Demo Page',),
+      '/Computer_Tern_Play':(context)=>const MySecondHomePage(),
     },
   ));
 }
+
