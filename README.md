@@ -6,20 +6,21 @@
 <h1>Components</h1>
 <h2 align="center">The app typically includes the following components:</h2>
 <ul>
- <li>Text Field: The text field show after the starting the game in this text field enterd the players name,if the game end than show winner(player name). </li>
+ <li>Text Field: The text field show after the start of the game in this text field enter the player's name, if the game ends then shows the winner(player name). </li>
  <li>Game Board: This is a 3x3 grid where players make their moves by tapping on the cells. It visually represents the current state of the game.</li>
  <li>Player Turns: The app indicates which player's turn it is, typically by displaying their respective mark (X or O) and highlighting their name or icon.</li>
  <li>Move Validation: The app validates each move to ensure it is valid and that the selected cell is empty. If an invalid move is made, the app prompts the player to try again.</li>
- <li> Win Detection: After each move, the app checks if a player has won the game by having three of their marks in a row or column. If a win condition is true, the app declares the winner name and ends the game.</li>
+ <li> Win Detection: After each move, the app checks if a player has won the game by having three of their marks in a row or column. If a win condition is true, the app declares the winner's name and ends the game.</li>
  <li>Draw Detection: If all the cells are filled and no player has won, the game is declared a draw.</li>
+ <li>Set Timer: If time is over according to during time then the game is over and if find a winner or game draw then time counting is off.</li>
 </ul>
 <h1>About The App</h1>
 <h5>
- <h5>This  Tic Tac Toe game which i have build while using dart/flutter programing language.</h5>
- In this game there are two modes one of which a user can choose at a time to play.
+ <h5>This  Tic Tac Toe game which I have built while using dart/flutter programing language.</h5>
+ In this game, there are two modes one of which a user can choose at a time to play.
  <ul>
   <li>First mode is to play with a computer in which you are there to play against a computer.</li>
-  <li>The secod mode is the human mode in which two humans play agains each other.</li>
+  <li>The second mode is the human mode in which two humans play against each other.</li>
  </ul>
 Like every other game it has three parameters for result i.e. Win, Lose, Tie which are decided at the end of each game accordingly. 
 I have tried adding few more things to that.
@@ -43,9 +44,11 @@ I have tried adding few more things to that.
 <ul>
   <li>Playing With Human Mode</li>
  <li>Playing With Computer Mode</li>
+ <li>Choose Who take first step(player or computer)</li>
  <li>Beautiful UI</li>
  <li>Multiple Pages</li>
 <li>Sound Effects</li>
+ <li>Set Timer</li>
  <li>Show Winner Name</li>
  <li>Light Effects</li>
 </ul>
