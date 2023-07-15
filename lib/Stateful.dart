@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 import 'Utilites.dart';
 //*************** Human Mode State full widget*****************//
@@ -50,6 +51,9 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
           showornot = false;
           timeover = true; //change the bool value here on timeover
           _timer.cancel();
+          final player = AudioPlayer();
+          player.play(AssetSource('Loss1.wav'));
+
         });
       }
     });
@@ -132,6 +136,8 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
       // if winner is find than time is stop
       _timer.cancel();
       winner = currentplayername;
+      final player = AudioPlayer();
+      player.play(AssetSource('cracker1.wav'));
       return 1;
     }
     if (ocount == 3) {
@@ -140,6 +146,8 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
       // if winner is find than time is stop
       _timer.cancel();
       winner = secondplayername;
+      final player = AudioPlayer();
+      player.play(AssetSource('cracker1.wav'));
       return 2;
     }
     if (xcount > 0 && ocount > 0) {
@@ -243,6 +251,9 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
       Gamedraw = true;
       //if game draw than time is stop
       _timer.cancel();
+      final player = AudioPlayer();
+      player.play(AssetSource('looser.wav'));
+
       return 3;
     }
     return 0;
@@ -272,7 +283,6 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                     Text(
                       "Player X:- $currentplayername",
                       style: TextStyle(
-                        fontSize: 30,
                         fontWeight: FontWeight.bold,
                         color: currentplayercolorred,
                       ),
@@ -281,7 +291,6 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                     Text(
                       "Player O:- $secondplayername",
                       style: TextStyle(
-                        fontSize: 30,
                         fontWeight: FontWeight.bold,
                         color: secondplayercolorred,
                       ),
@@ -381,7 +390,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                   child: Center(
                       child: Text(
                     "Time Remaining: $_Counter",
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
@@ -418,6 +427,8 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                           play = true;
                           cross(index);
                           Score();
+                          final player = AudioPlayer();
+                          player.play(AssetSource('note5.wav'));
                           // checkLine(p1, p2, p3);
                         },
                         child: Center(
@@ -507,6 +518,9 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
 }
 
 
+
+
+
 //*************** First tap Human Mode state full widget**************//
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -547,6 +561,8 @@ class _MyHomePageState extends State<MyHomePage> {
           showornot = false;
           timeover = true; //change the bool value here on timeover
           _timer.cancel();
+          final player = AudioPlayer();
+          player.play(AssetSource('Loss1.wav'));
         });
       }
     });
@@ -568,9 +584,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (checkAll() != 0) {
       return;
     }
-    if (result == 8) {
-
-    }
+    if (result == 8) {}
 
     setState(() {
       currentplayer = "X";
@@ -588,7 +602,6 @@ class _MyHomePageState extends State<MyHomePage> {
         checkAll();
         return;
       }
-
     });
   }
 
@@ -627,6 +640,8 @@ class _MyHomePageState extends State<MyHomePage> {
       _timer.cancel();
       showornot = false;
       winner = currentplayername;
+      final player = AudioPlayer();
+      player.play(AssetSource('cracker1.wav'));
       return 1;
     }
     if (ocount == 3) {
@@ -634,6 +649,8 @@ class _MyHomePageState extends State<MyHomePage> {
       _timer.cancel();
       showornot = false;
       winner = "Computer";
+      final player = AudioPlayer();
+      player.play(AssetSource('looser.wav'));
       return 2;
     }
     if (xcount > 0 && ocount > 0) {
@@ -736,7 +753,9 @@ class _MyHomePageState extends State<MyHomePage> {
     if (blockcount == 8) {
       _timer.cancel();
       Gamedraw = true;
-      showornot=false;
+      showornot = false;
+      final player = AudioPlayer();
+      player.play(AssetSource('Loss1.wav'));
       return 3;
     }
     return 0;
@@ -820,7 +839,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-              if (timeover==true) // if time is over than show this message
+              if (timeover == true) // if time is over than show this message
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Center(
@@ -887,11 +906,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         onTap: () {
                           play = true;
                           cross(index);
-                         if(currentplayer=="O"){
-                           setState(() {
-                             Computer_maker(index);
-                           });
-                         }
+                          final player = AudioPlayer();
+                          player.play(AssetSource('note5.wav'));
+                          if (currentplayer == "O") {
+                            setState(() {
+                              Computer_maker(index);
+                            });
+                          }
 
                           // // checkLine(p1, p2, p3);
                         },
@@ -909,7 +930,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               if (showbtn != true)
-
                 Padding(
                   padding: const EdgeInsets.only(top: 200),
                   child: Container(
@@ -982,7 +1002,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-
 //******************* First tap Computer Mode state full widget***************//
 class MySecondHomePage extends StatefulWidget {
   const MySecondHomePage({super.key});
@@ -1008,7 +1027,6 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
   int _Counter = 30;
   late Timer _timer;
 
-
   // All function using in the app
   void startTimer() {
     _Counter = 30;
@@ -1022,6 +1040,8 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
           showornot = false;
           timeover = true; //change the bool value here on timeover
           _timer.cancel();
+          final player = AudioPlayer();
+          player.play(AssetSource('Loss1.wav'));
         });
       }
     });
@@ -1043,8 +1063,7 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
     if (checkAll() != 0) {
       return;
     }
-    if (result == 8) {
-    }
+    if (result == 8) {}
 
     setState(() {
       currentplayer = "X";
@@ -1060,7 +1079,6 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
         checkAll();
         return;
       }
-
     });
   }
 
@@ -1071,7 +1089,7 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
 
   void cross(i) {
     setState(
-          () {
+      () {
         if (grid[i] == '-') {
           //if program is restart than var again call
           winner = "";
@@ -1099,6 +1117,8 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
       _timer.cancel();
       showornot = false;
       winner = currentplayername;
+      final player = AudioPlayer();
+      player.play(AssetSource('cracker1.wav'));
       return 1;
     }
     if (ocount == 3) {
@@ -1106,6 +1126,8 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
       _timer.cancel();
       showornot = false;
       winner = "Computer";
+      final player = AudioPlayer();
+      player.play(AssetSource('looser.wav'));
       return 2;
     }
     if (xcount > 0 && ocount > 0) {
@@ -1208,6 +1230,8 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
     if (blockcount == 8) {
       _timer.cancel();
       Gamedraw = true;
+      final player = AudioPlayer();
+      player.play(AssetSource('Loss1.wav'));
       return 3;
     }
     return 0;
@@ -1291,7 +1315,7 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
                     ),
                   ),
                 ),
-              if (timeover==true) // if time is over than show this message
+              if (timeover == true) // if time is over than show this message
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Center(
@@ -1321,12 +1345,12 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
                   ),
                   child: Center(
                       child: Text(
-                        "Time Remaining: $_Counter",
-                        style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      )),
+                    "Time Remaining: $_Counter",
+                    style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  )),
                 ),
               ),
               Visibility(
@@ -1343,7 +1367,7 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
                     // in this app using shrinkwrap in the black color
                     shrinkWrap: true,
                     gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
@@ -1358,7 +1382,9 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
                         onTap: () {
                           play = true;
                           cross(index);
-                          if(currentplayer=="O"){
+                          final player = AudioPlayer();
+                          player.play(AssetSource('note5.wav'));
+                          if (currentplayer == "O") {
                             setState(() {
                               Computer_maker(index);
                             });
@@ -1368,12 +1394,12 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
                         },
                         child: Center(
                             child: Text(
-                              grid[index],
-                              style: const TextStyle(
-                                  fontSize: 50,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.teal),
-                            )),
+                          grid[index],
+                          style: const TextStyle(
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.teal),
+                        )),
                       ),
                     ),
                   ),
@@ -1403,7 +1429,7 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
                       child: ElevatedButton(
                           onPressed: () {
                             startTimer();
-                            grid[4]=secondplayer;
+                            grid[4] = secondplayer;
                             showbtn = true;
                             showornot = true;
                           },
@@ -1437,7 +1463,7 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
                       child: ElevatedButton(
                           onPressed: () {
                             restart();
-                            grid[6]=secondplayer;
+                            grid[6] = secondplayer;
                             showornot = true;
                           },
                           child: const Text(
