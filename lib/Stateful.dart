@@ -34,13 +34,16 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
   bool play = false;
   bool showbtn = false;
   bool timeover = false; // using time over message
+  int Xcounter = 0;
+  int Ocounter = 0;
+
   int result = 0;
-  int _Counter = 20;
+  int _Counter = 30;
   late Timer _timer;
 
   // All function using in the app
   void startTimer() {
-    _Counter = 20;
+    _Counter = 30;
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (_Counter > 0) {
         setState(() {
@@ -53,33 +56,8 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
           _timer.cancel();
           final player = AudioPlayer();
           player.play(AssetSource('Loss1.wav'));
-
         });
       }
-    });
-  }
-
-  void Score() {
-    setState(() {
-      // if(grid[0]=="X"){
-      //  scoreX = scoreX+=3;
-      //   print("player x=$scoreX");
-      // }
-
-      // if(grid[0]=="O"){
-      //   scoreY=scoreY+=3;
-      //   print("player y=$scoreY");
-      // }
-
-      // if(grid[2]=="X"){
-      //   scoreX=scoreX+=3;
-      //   print("player x=$scoreX");
-      // }
-
-      // if(grid[2]=="O"){
-      //  scoreY= scoreY+=3;
-      //   print("player y=$scoreY");
-      // }
     });
   }
 
@@ -136,8 +114,9 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
       // if winner is find than time is stop
       _timer.cancel();
       winner = currentplayername;
+      Xcounter++;
       final player = AudioPlayer();
-      player.play(AssetSource('cracker1.wav'));
+      player.play(AssetSource('clap2.wav'));
       return 1;
     }
     if (ocount == 3) {
@@ -146,8 +125,9 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
       // if winner is find than time is stop
       _timer.cancel();
       winner = secondplayername;
+      Ocounter++;
       final player = AudioPlayer();
-      player.play(AssetSource('cracker1.wav'));
+      player.play(AssetSource('clap2.wav'));
       return 2;
     }
     if (xcount > 0 && ocount > 0) {
@@ -372,6 +352,13 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                     ),
                   ),
                 ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("X wins: $Xcounter"),
+                  Text("O wins:$Ocounter"),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: Container(
@@ -426,7 +413,6 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                         onTap: () {
                           play = true;
                           cross(index);
-                          Score();
                           final player = AudioPlayer();
                           player.play(AssetSource('note5.wav'));
                           // checkLine(p1, p2, p3);
@@ -517,11 +503,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
   }
 }
 
-
-
-
-
-//*************** First tap Human Mode state full widget**************//
+//*************** First tap Human place icon state full widget**************//
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -544,6 +526,8 @@ class _MyHomePageState extends State<MyHomePage> {
   bool play = false;
   bool timeover = false;
   bool showbtn = false;
+  // int Xcount=0;
+  // int Ocount=0;
   int result = 0;
   int _Counter = 20;
   late Timer _timer;
@@ -640,6 +624,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _timer.cancel();
       showornot = false;
       winner = currentplayername;
+      // Xcount++;
       final player = AudioPlayer();
       player.play(AssetSource('cracker1.wav'));
       return 1;
@@ -649,6 +634,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _timer.cancel();
       showornot = false;
       winner = "Computer";
+      // Ocount++;
       final player = AudioPlayer();
       player.play(AssetSource('looser.wav'));
       return 2;
@@ -852,6 +838,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
+              Row(
+                children: [
+                  // Text("X wins:$Xcount"),
+                  //  Text("O wins:$Ocount"),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: Container(
@@ -1002,7 +994,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-//******************* First tap Computer Mode state full widget***************//
+//******************* First tap Computer place icon state full widget***************//
 class MySecondHomePage extends StatefulWidget {
   const MySecondHomePage({super.key});
 
@@ -1023,6 +1015,10 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
   bool play = false;
   bool timeover = false;
   bool showbtn = false;
+
+  int Xcounter = 0;
+  int Ocounter = 0;
+
   int result = 0;
   int _Counter = 30;
   late Timer _timer;
@@ -1112,13 +1108,16 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
     if (grid[p1] == 'O') ocount++;
     if (grid[p2] == 'O') ocount++;
     if (grid[p3] == 'O') ocount++;
+
     if (xcount == 3) {
       GameEnd = true;
       _timer.cancel();
       showornot = false;
       winner = currentplayername;
+      Xcounter++;
+      print("Counter=$Xcounter");
       final player = AudioPlayer();
-      player.play(AssetSource('cracker1.wav'));
+      player.play(AssetSource('clap2.wav'));
       return 1;
     }
     if (ocount == 3) {
@@ -1126,6 +1125,7 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
       _timer.cancel();
       showornot = false;
       winner = "Computer";
+      Ocounter++;
       final player = AudioPlayer();
       player.play(AssetSource('looser.wav'));
       return 2;
@@ -1328,6 +1328,13 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
                     ),
                   ),
                 ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("X wins:$Xcounter"),
+                  Text("O wins:$Ocounter"),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: Container(
