@@ -526,8 +526,9 @@ class _MyHomePageState extends State<MyHomePage> {
   bool play = false;
   bool timeover = false;
   bool showbtn = false;
-  // int Xcount=0;
-  // int Ocount=0;
+  int Xcounter=0;
+  int Ocounter=0;
+  int currentresult=-1;
   int result = 0;
   int _Counter = 20;
   late Timer _timer;
@@ -576,9 +577,6 @@ class _MyHomePageState extends State<MyHomePage> {
       while (isOccupied(num)) {
         num = Random().nextInt(8);
       }
-      // if(grid[0]=="X"|| grid[1]=="X"){
-      //   grid[3]=secondplayer;
-      // }
       if (grid[num] == "-") {
         print("Valid");
         print(num);
@@ -620,23 +618,10 @@ class _MyHomePageState extends State<MyHomePage> {
     if (grid[p2] == 'O') ocount++;
     if (grid[p3] == 'O') ocount++;
     if (xcount == 3) {
-      GameEnd = true;
-      _timer.cancel();
-      showornot = false;
-      winner = currentplayername;
-      // Xcount++;
-      final player = AudioPlayer();
-      player.play(AssetSource('cracker1.wav'));
       return 1;
     }
     if (ocount == 3) {
-      GameEnd = true;
-      _timer.cancel();
-      showornot = false;
-      winner = "Computer";
-      // Ocount++;
-      final player = AudioPlayer();
-      player.play(AssetSource('looser.wav'));
+
       return 2;
     }
     if (xcount > 0 && ocount > 0) {
@@ -839,9 +824,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // Text("X wins:$Xcount"),
-                  //  Text("O wins:$Ocount"),
+                  Text("X wins:$Xcounter"),
+                   Text("O wins:$Ocounter"),
                 ],
               ),
               Padding(
@@ -898,11 +884,44 @@ class _MyHomePageState extends State<MyHomePage> {
                         onTap: () {
                           play = true;
                           cross(index);
+                          currentresult=checkAll();
+                          setState(() {
+
+                          });
+                          // X-win the game(player is winner)
+                          if(currentresult==1){
+                            GameEnd = true;
+                            _timer.cancel();
+                            showornot = false;
+                            winner = currentplayername;
+                             Xcounter++;
+                            final player = AudioPlayer();
+                            player.play(AssetSource('clap2.wav'));
+                            return;
+                          }
+                          // Create the same-sound each click
                           final player = AudioPlayer();
                           player.play(AssetSource('note5.wav'));
+
+                          // Computer create the icon
                           if (currentplayer == "O") {
                             setState(() {
                               Computer_maker(index);
+                              // Create the same-sound each click
+                              final player = AudioPlayer();
+                              player.play(AssetSource('note5.wav'));
+                              currentresult=checkAll();
+                              // O wins the game(computer winner)
+                              if(currentresult==2){
+                                GameEnd = true;
+                                _timer.cancel();
+                                showornot = false;
+                                winner = "Computer";
+                                 Ocounter++;
+                                final player = AudioPlayer();
+                                player.play(AssetSource('looser.wav'));
+                              }
+                              return;
                             });
                           }
 
@@ -1018,7 +1037,7 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
 
   int Xcounter = 0;
   int Ocounter = 0;
-
+int currentresult=-1;
   int result = 0;
   int _Counter = 30;
   late Timer _timer;
@@ -1101,6 +1120,7 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
   }
 
   int checkLine(int p1, int p2, int p3) {
+    // 0-Continue, 1-X Wins, 2-O Wins, 3-Draw
     int xcount = 0, ocount = 0;
     if (grid[p1] == 'X') xcount++;
     if (grid[p2] == 'X') xcount++;
@@ -1110,24 +1130,10 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
     if (grid[p3] == 'O') ocount++;
 
     if (xcount == 3) {
-      GameEnd = true;
-      _timer.cancel();
-      showornot = false;
-      winner = currentplayername;
-      Xcounter++;
-      print("Counter=$Xcounter");
-      final player = AudioPlayer();
-      player.play(AssetSource('clap2.wav'));
       return 1;
     }
+
     if (ocount == 3) {
-      GameEnd = true;
-      _timer.cancel();
-      showornot = false;
-      winner = "Computer";
-      Ocounter++;
-      final player = AudioPlayer();
-      player.play(AssetSource('looser.wav'));
       return 2;
     }
     if (xcount > 0 && ocount > 0) {
@@ -1137,6 +1143,7 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
   }
 
   int checkAll() {
+    // 0-Continue, 1-X Wins, 2-O Wins, 3-Draw
     int blockcount = 0;
     int count = checkLine(0, 1, 2);
     if (count == 1) {
@@ -1241,7 +1248,7 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title:  Text(
           "Tic Tac Toe ",
           style: TextStyle(
               color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
@@ -1389,11 +1396,46 @@ class _MySecondHomePageState extends State<MySecondHomePage> {
                         onTap: () {
                           play = true;
                           cross(index);
+                          currentresult=checkAll();
+
+                          setState(() {
+
+                          });
+                          //X is win that means(Player is winner)
+                          if(currentresult==1)
+                          {
+                            GameEnd = true;
+                            _timer.cancel();
+                            showornot = false;
+                            winner = currentplayername;
+                             Xcounter++;
+                            final player = AudioPlayer();
+                            player.play(AssetSource('clap2.wav'));
+                              return;
+                          }
+                          // Crete this sound each and every click
                           final player = AudioPlayer();
                           player.play(AssetSource('note5.wav'));
+                          // play the chance of computer
                           if (currentplayer == "O") {
                             setState(() {
                               Computer_maker(index);
+                              final player = AudioPlayer();
+                              // Crete this sound each and every click
+                              player.play(AssetSource('note5.wav'));
+                              currentresult=checkAll();
+                              //O is win that means(Computer is winner)
+                              if(currentresult==2){
+                                GameEnd = true;
+                                _timer.cancel();
+                                showornot = false;
+                                winner ="Computer";
+                                Ocounter++;
+                                final player = AudioPlayer();
+                                player.play(AssetSource('looser.wav'));
+                              }
+                              return;
+
                             });
                           }
 

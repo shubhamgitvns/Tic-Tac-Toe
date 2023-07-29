@@ -633,7 +633,7 @@ class ChooseTern extends StatelessWidget {
                 ),
                 const SizedBox(height: 29),
                 const Text(
-                  'Whos Will Take First Step ',
+                  'Who Will Take First Step ',
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,

@@ -10,7 +10,6 @@ void main() {
       '/': (context) => const WelcomPage(),
       '/optionalpage': (context) => const OptionalPage(),
       '/computermode': (context) => const IntroPage(),
-      //'/computermodeplay':(context) => const MyApp(),
       '/humanmode': (context) => PlayersIntroPage(),
       '/humanmodeplay': (context) => const MyFirstApp(),
       '/Choose_tern': (context) => const ChooseTern(),
