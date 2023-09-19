@@ -36,7 +36,6 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
   bool timeover = false; // using time over message
   int Xcounter = 0;
   int Ocounter = 0;
-
   int result = 0;
   int _Counter = 30;
   late Timer _timer;
@@ -488,6 +487,7 @@ class _MyFirstHomePageState extends State<MyFirstHomePage> {
                           onPressed: () {
                             restart();
                             showornot = true;
+                            GameEnd=false;
                           },
                           child: const Text(
                             "Play Again",
@@ -884,6 +884,243 @@ class _MyHomePageState extends State<MyHomePage> {
                         onTap: () {
                           play = true;
                           cross(index);
+                          if (currentplayer == "O" && grid[0]=='X'&& grid[1]=='X'&& grid[2]!='O' ) {
+                            setState(() {
+                              grid[2]='O';
+                              currentplayer='X';
+                            });
+
+                          }
+
+
+                          if (currentplayer == "O" && grid[2]=='X'&& grid[1]=='X'&& grid[0]!='O' ) {
+                            setState(() {
+                              grid[0]='O';
+                              currentplayer='X';
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[0]=='X'&& grid[2]=='X'&& grid[1]!='O' ) {
+                            setState(() {
+                              grid[1]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[3]=='X'&& grid[4]=='X'&& grid[5]!='O' ) {
+                            setState(() {
+                              grid[5]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+                          if (currentplayer == "O" && grid[5]=='X'&& grid[4]=='X'&& grid[3]!='O' ) {
+                            setState(() {
+                              grid[3]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[3]=='X'&& grid[5]=='X'&& grid[4]!='O' ) {
+                            setState(() {
+                              grid[4]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[6]=='X'&& grid[7]=='X'&& grid[8]!='O' ) {
+                            setState(() {
+                              grid[8]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[8]=='X'&& grid[7]=='X'&& grid[6]!='O' ) {
+                            setState(() {
+                              grid[6]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[6]=='X'&& grid[8]=='X'&& grid[7]!='O' ) {
+                            setState(() {
+                              grid[7]='O';
+                              currentplayer='X';
+
+
+                            });
+
+                          }
+
+
+                          if (currentplayer == "O" && grid[0]=='X'&& grid[3]=='X'&& grid[6]!='O' ) {
+                            setState(() {
+                              grid[6]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[6]=='X'&& grid[3]=='X'&& grid[0]!='O' ) {
+                            setState(() {
+                              grid[0]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+                          if (currentplayer == "O" && grid[0]=='X'&& grid[6]=='X'&& grid[3]!='O' ) {
+                            setState(() {
+                              grid[3]='O';
+                              currentplayer='X';
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[1]=='X'&& grid[4]=='X'&& grid[7]!='O' ) {
+                            setState(() {
+                              grid[7]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[7]=='X'&& grid[4]=='X'&& grid[1]!='O' ) {
+                            setState(() {
+                              grid[1]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[1]=='X'&& grid[7]=='X'&& grid[4]!='O' ) {
+                            setState(() {
+                              grid[4]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[2]=='X'&& grid[5]=='X'&& grid[8]!='O' ) {
+                            setState(() {
+                              grid[8]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[8]=='X'&& grid[5]=='X'&& grid[2]!='O' ) {
+                            setState(() {
+                              grid[2]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[2]=='X'&& grid[8]=='X'&& grid[5]!='O' ) {
+                            setState(() {
+                              grid[5]='O';
+                              currentplayer='X';
+
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[0]=='X'&& grid[4]=='X'&& grid[8]!='O' ) {
+                            setState(() {
+                              grid[8]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[8]=='X'&& grid[4]=='X'&& grid[0]!='O' ) {
+                            setState(() {
+                              grid[0]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[0]=='X'&& grid[8]=='X'&& grid[4]!='O' ) {
+                            setState(() {
+                              grid[4]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+                          //
+                          if (currentplayer == "O" && grid[2]=='X'&& grid[4]=='X'&& grid[6]!='O' ) {
+                            setState(() {
+                              grid[6]='O';
+                              currentplayer='X';
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[6]=='X'&& grid[4]=='X'&& grid[2]!='O' ) {
+                            setState(() {
+                              grid[2]='O';
+                              currentplayer='X';
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[2]=='X'&& grid[6]=='X'&& grid[4]!='O' ) {
+                            setState(() {
+                              grid[4]='O';
+                              currentplayer='X';
+                            });
+
+                          }
+
+                          // // if (currentplayer == "O" && grid[0]=='X'|| grid[2]=='X'|| grid[6]=='X' || grid[8]=='X' ) {
+                          // //   setState(() {
+                          // //     grid[4]='O';
+                          // //     currentplayer='X';
+                          // //     print("pos-$grid[4]");
+                          // //   });
+                          // //   return;
+                          // // }
+                          //
+                          // // if(currentplayer == "O" && grid[4]=="O"){
+                          // //   setState(() {
+                          // //     Computer_maker(index);
+                          // //     print("hii");
+                          // //   });
+                          // //   return;
+                          // // }
+                          //
+
+                          else
+                          {
+                            setState(() {
+                              cross(index);
+                            });
+
+                          }
                           currentresult=checkAll();
                           setState(() {
 
@@ -998,6 +1235,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           onPressed: () {
                             restart();
                             showornot = true;
+                            GameEnd=false;
                           },
                           child: const Text(
                             "Play Again",
@@ -1396,6 +1634,244 @@ int currentresult=-1;
                         onTap: () {
                           play = true;
                           cross(index);
+                          print(currentplayer);
+                          if (currentplayer == "O" && grid[0]=='X'&& grid[1]=='X'&& grid[2]!='O' ) {
+                            setState(() {
+                              grid[2]='O';
+                              currentplayer='X';
+                            });
+
+                          }
+
+
+                          if (currentplayer == "O" && grid[2]=='X'&& grid[1]=='X'&& grid[0]!='O' ) {
+                            setState(() {
+                              grid[0]='O';
+                              currentplayer='X';
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[0]=='X'&& grid[2]=='X'&& grid[1]!='O' ) {
+                            setState(() {
+                              grid[1]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[3]=='X'&& grid[4]=='X'&& grid[5]!='O' ) {
+                            setState(() {
+                              grid[5]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+                          if (currentplayer == "O" && grid[5]=='X'&& grid[4]=='X'&& grid[3]!='O' ) {
+                            setState(() {
+                              grid[3]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[3]=='X'&& grid[5]=='X'&& grid[4]!='O' ) {
+                            setState(() {
+                              grid[4]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[6]=='X'&& grid[7]=='X'&& grid[8]!='O' ) {
+                            setState(() {
+                              grid[8]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[8]=='X'&& grid[7]=='X'&& grid[6]!='O' ) {
+                            setState(() {
+                              grid[6]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[6]=='X'&& grid[8]=='X'&& grid[7]!='O' ) {
+                            setState(() {
+                              grid[7]='O';
+                              currentplayer='X';
+
+
+                            });
+
+                          }
+
+
+                          if (currentplayer == "O" && grid[0]=='X'&& grid[3]=='X'&& grid[6]!='O' ) {
+                            setState(() {
+                              grid[6]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[6]=='X'&& grid[3]=='X'&& grid[0]!='O' ) {
+                            setState(() {
+                              grid[0]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+                          if (currentplayer == "O" && grid[0]=='X'&& grid[6]=='X'&& grid[3]!='O' ) {
+                            setState(() {
+                              grid[3]='O';
+                              currentplayer='X';
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[1]=='X'&& grid[4]=='X'&& grid[7]!='O' ) {
+                            setState(() {
+                              grid[7]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[7]=='X'&& grid[4]=='X'&& grid[1]!='O' ) {
+                            setState(() {
+                              grid[1]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[1]=='X'&& grid[7]=='X'&& grid[4]!='O' ) {
+                            setState(() {
+                              grid[4]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[2]=='X'&& grid[5]=='X'&& grid[8]!='O' ) {
+                            setState(() {
+                              grid[8]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[8]=='X'&& grid[5]=='X'&& grid[2]!='O' ) {
+                            setState(() {
+                              grid[2]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[2]=='X'&& grid[8]=='X'&& grid[5]!='O' ) {
+                            setState(() {
+                              grid[5]='O';
+                              currentplayer='X';
+
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[0]=='X'&& grid[4]=='X'&& grid[8]!='O' ) {
+                            setState(() {
+                              grid[8]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[8]=='X'&& grid[4]=='X'&& grid[0]!='O' ) {
+                            setState(() {
+                              grid[0]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[0]=='X'&& grid[8]=='X'&& grid[4]!='O' ) {
+                            setState(() {
+                              grid[4]='O';
+                              currentplayer='X';
+
+                            });
+
+                          }
+                          //
+                          if (currentplayer == "O" && grid[2]=='X'&& grid[4]=='X'&& grid[6]!='O' ) {
+                            setState(() {
+                              grid[6]='O';
+                              currentplayer='X';
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[6]=='X'&& grid[4]=='X'&& grid[2]!='O' ) {
+                            setState(() {
+                              grid[2]='O';
+                              currentplayer='X';
+                            });
+
+                          }
+
+                          if (currentplayer == "O" && grid[2]=='X'&& grid[6]=='X'&& grid[4]!='O' ) {
+                            setState(() {
+                              grid[4]='O';
+                              currentplayer='X';
+                            });
+
+                          }
+
+                          // // if (currentplayer == "O" && grid[0]=='X'|| grid[2]=='X'|| grid[6]=='X' || grid[8]=='X' ) {
+                          // //   setState(() {
+                          // //     grid[4]='O';
+                          // //     currentplayer='X';
+                          // //     print("pos-$grid[4]");
+                          // //   });
+                          // //   return;
+                          // // }
+                          //
+                          // // if(currentplayer == "O" && grid[4]=="O"){
+                          // //   setState(() {
+                          // //     Computer_maker(index);
+                          // //     print("hii");
+                          // //   });
+                          // //   return;
+                          // // }
+                          //
+
+                          else
+                          {
+                            setState(() {
+                              cross(index);
+                            });
+
+                          }
                           currentresult=checkAll();
 
                           setState(() {
@@ -1514,6 +1990,7 @@ int currentresult=-1;
                             restart();
                             grid[6] = secondplayer;
                             showornot = true;
+                            GameEnd=false;
                           },
                           child: const Text(
                             "Play Again",
