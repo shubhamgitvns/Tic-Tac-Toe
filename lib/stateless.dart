@@ -219,8 +219,14 @@ class OptionalPage extends StatelessWidget {
                         child: Center(
                             child: SizedBox(
                                 height: 100,
-                                child: Image.network(
-                                    'https://media.istockphoto.com/id/1097309742/vector/versus-screen-vs-battle-headline-conflict-duel-between-teams-confrontation-fight-competition.jpg?s=612x612&w=0&k=20&c=ZWrDXhVdD7TbqE_kzUVispiX5eN6tHDg0DvmVSUv8mg='))),
+                                child: InkWell(
+                                  onTap: (){
+                                    Navigator.pushNamed(context, '/humanmode');
+                                  },
+                                  child: Image.network(
+                                      'https://media.istockphoto.com/id/1097309742/vector/versus-screen-vs-battle-headline-conflict-duel-between-teams-confrontation-fight-competition.jpg?s=612x612&w=0&k=20&c=ZWrDXhVdD7TbqE_kzUVispiX5eN6tHDg0DvmVSUv8mg='),
+                                )
+                                )),
                       ),
                     ),
                     Padding(
@@ -248,8 +254,13 @@ class OptionalPage extends StatelessWidget {
                         child: Center(
                             child: SizedBox(
                                 height: 100,
-                                child: Image.network(
-                                    'https://media.istockphoto.com/id/937014004/vector/video-game-controller-icon-flat.jpg?s=612x612&w=0&k=20&c=Nxvg6dESxXCPIf29MlN8mwervkn7G2JwMbeTHP6RGAc='))),
+                                child:InkWell(
+                                  onTap: (){
+                                    Navigator.pushNamed(context, '/computermode');
+                                  },
+                                  child:  Image.network(
+                                      'https://media.istockphoto.com/id/937014004/vector/video-game-controller-icon-flat.jpg?s=612x612&w=0&k=20&c=Nxvg6dESxXCPIf29MlN8mwervkn7G2JwMbeTHP6RGAc='),
+                                ))),
                       ),
                     ),
                   ],
@@ -261,48 +272,21 @@ class OptionalPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Center(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/humanmode');
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.amberAccent,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 32, vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                          child: const Text(
-                            'Human Mode',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, color: Colors.white
-                                // color: Color(0xFF09203f),
-                                ),
-                          ),
-                        ),
+                        child: Text("Human Mode",style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.amberAccent,
+                          letterSpacing: 1.5,
+                        ),)
                       ),
                     ),
                     Center(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // Navigate to the game screen
-                          Navigator.pushNamed(context, '/computermode');
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.amberAccent,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 32, vertical: 16),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        child: const Text(
-                          'Computer mode',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.white),
-                        ),
-                      ),
+                        child: Text("Computer Mode",style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.amberAccent,
+                          letterSpacing: 1.5,
+                        ),)
                     )
                   ],
                 ),
