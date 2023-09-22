@@ -53,6 +53,12 @@ I have tried adding few more things to that.
  <li>Show Winner Name</li>
  <li>Light Effects</li>
 </ul>
+<h1>Used Technology</h1>
+<li>Flutter</li>
+<li>Dart</li>
+<h1>Supporting Plateform</h1>
+<li>Android</li>
+<li>Web</li>
 <h1>Welcome Page</h1>
 <img width="958" alt="welcometictack" src="https://github.com/shubhamgitvns/Tic-Tac-Toe/assets/93187281/21f23482-10e3-45d7-b7d5-f508055ebc39">
 <h1>Game Mode Page</h1>
