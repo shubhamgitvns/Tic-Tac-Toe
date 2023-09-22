@@ -45,6 +45,7 @@ I have tried adding few more things to that.
   <li>Playing With Human Mode</li>
  <li>Playing With Computer Mode</li>
  <li>Choose Who take first step(player or computer)</li>
+ <li>Hard Mode in Computer</li>
  <li>Beautiful UI</li>
  <li>Multiple Pages</li>
 <li>Sound Effects</li>
@@ -52,4 +53,23 @@ I have tried adding few more things to that.
  <li>Show Winner Name</li>
  <li>Light Effects</li>
 </ul>
+<h1>Welcome Page</h1>
+<img width="958" alt="welcometictack" src="https://github.com/shubhamgitvns/Tic-Tac-Toe/assets/93187281/21f23482-10e3-45d7-b7d5-f508055ebc39">
+<h1>Game Mode Page</h1>
+<img width="960" alt="optional" src="https://github.com/shubhamgitvns/Tic-Tac-Toe/assets/93187281/fc7f3f4e-faac-4152-a785-25a1905b3eb3">
+<h1>Intro Page</h1>
+<img width="959" alt="hum form" src="https://github.com/shubhamgitvns/Tic-Tac-Toe/assets/93187281/a3b72717-10fb-4137-a43b-e63fd7f38793">
+
+<h1>Player Choose Page</h1>
+<img width="960" alt="comp optionpage" src="https://github.com/shubhamgitvns/Tic-Tac-Toe/assets/93187281/1e8ea3cb-9f92-4b00-98af-45da25f44fc2">
+
+<h1>Game Page</h1>
+<img width="958" alt="com game" src="https://github.com/shubhamgitvns/Tic-Tac-Toe/assets/93187281/ecb003bb-7d59-4470-910d-ed4318583eed">
+
+
+<h1>Winner Page</h1>
+<img width="956" alt="winnerpage" src="https://github.com/shubhamgitvns/Tic-Tac-Toe/assets/93187281/857ce3e1-2e40-4266-8b44-eacb95a9b613">
+
+
+
 
