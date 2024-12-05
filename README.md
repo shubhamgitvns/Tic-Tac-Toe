@@ -4,7 +4,6 @@
  <h5>A Tic Tac Toe game app is a simple and classic two-player game where players take turns marking X or O on a 3x3 grid. The objective of the game is to get three of their own marks in a row, either horizontally, vertically, or diagonally, before the opponent does.
 </h5>
 <h1>Components</h1>
-<h2 align="center">The app typically includes the following components:</h2>
 <ul>
  <li>Text Field: The text field show after the start of the game in this text field enter the player's name, if the game ends then shows the winner(player name). </li>
  <li>Game Board: This is a 3x3 grid where players make their moves by tapping on the cells. It visually represents the current state of the game.</li>
